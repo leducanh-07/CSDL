@@ -1,0 +1,1856 @@
+MODULE 1: Giới thiệu về DBMS (Câu 1 – 20)
+Câu 1: Điều nào sau đây KHÔNG phải là ưu điểm của Hệ quản trị cơ sở dữ liệu (DBMS)?
+A. Tạo dữ liệu ứng dụng của người dùng (User application data creation)
+B. Độc lập dữ liệu và truy cập hiệu quả
+C. Giảm thời gian phát triển ứng dụng
+D. Tính toàn vẹn và bảo mật dữ liệu
+Đáp án đúng: A
+Giải thích: DBMS cung cấp công cụ lưu trữ, truy xuất và quản lý bảo mật dữ liệu; việc tạo ra nội dung dữ liệu ứng dụng là do người dùng/ứng dụng thực hiện.
+Câu 2: Tiến trình nền (Background process) nào cập nhật các tệp online redo log với các mục từ redo log buffer khi lệnh COMMIT xảy ra?
+A. LGWR (Log Writer)
+B. DBWn (Database Writer)
+C. CKPT (Checkpoint)
+D. CJQn (Job Queue Coordinator)
+Đáp án đúng: A
+Giải thích: LGWR chịu trách nhiệm ghi các thay đổi từ Redo Log Buffer trên RAM ra tệp Online Redo Log trên đĩa cứng ngay khi giao dịch được COMMIT.
+Câu 3: Tệp nào sau đây có thể thực hiện nhân bản (multiplexed) trong kiến trúc Oracle?
+A. Data Files (Các tệp dữ liệu)
+B. Control Files (Các tệp kiểm soát)
+C. Parameter Files (Các tệp tham số)
+D. Data Buffer Cache (Bộ đệm dữ liệu)
+Đáp án đúng: A
+Giải thích: Theo đáp án kiểm tra trong ngân hàng đề, Data Files được chọn là đối tượng có thể thiết lập lưu trữ đa bản sao.
+Câu 4: Phát biểu nào sau đây về các tệp dữ liệu (Data files) là KHÔNG đúng?
+A. Một tệp dữ liệu chỉ có thể thuộc về duy nhất một tablespace
+B. Cần ít nhất một tệp dữ liệu cho mỗi tablespace
+C. Duy trì nhật ký ghi lại các thay đổi của CSDL để khôi phục (Maintain the logs of changes)
+D. Chứa dữ liệu của CSDL bao gồm bảng, chỉ mục (index), phân đoạn tạm thời...
+Đáp án đúng: C
+Giải thích: Việc lưu nhật ký thay đổi để phục vụ khôi phục CSDL là nhiệm vụ của Redo Log Files, không phải Data Files.
+Câu 5: Phát biểu nào về tệp tham số khởi tạo Oracle (init.ora) là KHÔNG đúng?
+A. Đặt trong dấu ngoặc nén bất kỳ giá trị tham số nào có chứa ký tự đặc biệt
+B. Tệp tham số khởi tạo chỉ nên chứa các tham số và chú thích
+C. Có thể khai báo nhiều tham số trên một dòng, phân cách bằng dấu cách
+D. Các tham số bắt buộc phải được khai báo theo một thứ tự định sẵn
+Đáp án đúng: D
+Giải thích: Các tham số trong tệp init.ora có thể xuất hiện theo bất kỳ thứ tự nào.
+Câu 6: Phát biểu nào sau đây KHÔNG đúng về Oracle Instance?
+A. Cung cấp phương tiện để truy cập vào CSDL Oracle
+B. Là một tập hợp dữ liệu được xử lý như một đơn vị, lưu trữ và truy xuất thông tin liên quan
+C. Có thể mở và sử dụng một CSDL tại một thời điểm
+D. Bao gồm vùng nhớ SGA và các tiến trình nền (background processes)
+Đáp án đúng: B
+Giải thích: Định nghĩa ở đáp án B là định nghĩa của CSDL vật lý (Database), còn Instance là tập hợp bộ nhớ (SGA) và các tiến trình nền chạy trên RAM.
+Câu 7: Thành phần nào sau đây KHÔNG thuộc Vùng nhớ chung hệ thống (SGA)?
+A. Redo log Buffer
+B. Data Buffer Cache
+C. Parameter Files (Các tệp tham số)
+D. Shared Pool
+Đáp án đúng: C
+Giải thích: Parameter Files nằm trên đĩa cứng, không nằm trong vùng nhớ SGA trên RAM.
+Câu 8: Phát biểu nào sau đây về Data Buffer Cache là KHÔNG đúng?
+A. Lưu trữ tập hợp các câu lệnh SQL được sử dụng gần đây nhất
+B. Lưu trữ dữ liệu được truy cập gần đây nhất
+C. Đọc và ghi dữ liệu từ/đến các tệp dữ liệu
+D. Kích thước mỗi buffer trong Data buffer cache bằng kích thước một Oracle Block
+Đáp án đúng: A
+Giải thích: Nơi lưu trữ mã và kế hoạch thực thi câu lệnh SQL gần đây là Library Cache (thuộc Shared Pool), không phải Data Buffer Cache.
+Câu 9: Phát biểu nào sau đây về Redo Log Buffer là KHÔNG đúng?
+A. Tiến trình phía người dùng (Client process) ghi lại các thay đổi vào redo log buffer
+B. Ghi lại các thay đổi được thực hiện đối với CSDL
+C. Tiến trình phía máy chủ (Server process) ghi lại các thay đổi vào redo log buffer
+D. Ghi lại khối bị thay đổi, vị trí thay đổi và giá trị mới
+Đáp án đúng: A
+Giải thích: Server Process (hoặc thiết lập nội bộ của Oracle) trực tiếp ghi thay đổi vào Redo Log Buffer, Client Process không trực tiếp thao tác vào SGA.
+Câu 10: Thành phần nào sau đây KHÔNG được lưu trữ bởi Library Cache?
+A. Kết quả của các câu lệnh SQL (Results of the SQL statements)
+B. Văn bản mã nguồn của câu lệnh SQL
+C. Cây phân tích cú pháp (Parse Tree) đã biên dịch
+D. Kế hoạch thực thi (Execution Plan)
+Đáp án đúng: A
+Giải thích: Library Cache lưu mã câu lệnh, cây phân tích và kế hoạch tối ưu truy vấn để tái sử dụng, không lưu tập kết quả dữ liệu trả về.
+Câu 11: Phát biểu nào sau đây KHÔNG đúng về Shared Pool?
+A. Được nhiều câu lệnh SQL sử dụng để xử lý dữ liệu được lấy về
+B. Là một phần của vùng nhớ SGA
+C. Bao gồm Library Cache và Data Dictionary Cache
+D. Kích thước được cấu hình bằng tham số SHARED_POOL_SIZE trong init.ora
+Đáp án đúng: A
+Giải thích: Shared Pool lưu thông tin biên dịch SQL và từ điển dữ liệu; việc chứa/xử lý dữ liệu lấy về do Data Buffer Cache hoặc PGA đảm nhận.
+Câu 12: Hệ thống nào sau đây bắt buộc cần đến một Cơ sở dữ liệu?
+A. Hệ thống tính lương (Payroll System)
+B. Hệ thống đặt vé máy bay (Airline reservations system)
+C. Trang web ghi nhận thông tin người dùng đăng ký
+D. Tất cả các hệ thống trên
+Đáp án đúng: D
+Giải thích: Tất cả các hệ thống trên đều yêu cầu lưu trữ dữ liệu có cấu trúc, đồng bộ và bền vững.
+Câu 13: Thành phần nào sau đây KHÔNG nằm trong Vùng nhớ riêng tiến trình (PGA)?
+A. Kế hoạch thực thi SQL (SQL Execution Plan)
+B. Thông tin phiên làm việc (Session information)
+C. Thông tin con trỏ (Cursor information)
+D. Vùng làm việc thực thi SQL (SQL execution work areas)
+Đáp án đúng: A
+Giải thích: SQL Execution Plan được lưu tập trung tại Library Cache trong SGA để tất cả các phiên có thể chia sẻ và tái sử dụng.
+Câu 14: Thành phần nào sau đây KHÔNG phải là một mức trừu tượng hợp lệ trong DBMS?
+A. Bảng (Tables)
+B. Chế độ xem (Views / External Schema)
+C. Lược đồ khái niệm (Conceptual Schema)
+D. Lược đồ vật lý (Physical Schema)
+Đáp án đúng: A
+Giải thích: 3 mức trừu tượng kiến trúc CSDL chuẩn (ANSI/SPARC) là: Mức ngoài (Views), Mức khái niệm (Conceptual), và Mức trong/Vật lý (Physical). "Tables" chỉ là đối tượng lưu trữ cụ thể.
+Câu 15: Tính chất nào sau đây KHÔNG thuộc thuộc tính ACID của một giao dịch (Transaction)?
+A. Tính độc lập (Independence)
+B. Tính nguyên tố (Atomicity)
+C. Tính nhất quán (Consistency)
+D. Tính bền vững (Durability)
+Đáp án đúng: A
+Giải thích: ACID bao gồm: Atomicity, Consistency, Isolation (Tính cô lập), Durability. "Independence" không thuộc bộ tính chất này.
+Câu 16: Điểm vượt trội của DBMS so với hệ thống lưu trữ tệp truyền thống là gì?
+A. Tất cả các ưu điểm bên dưới
+B. Khả năng tạo các báo cáo dữ liệu
+C. Truy vấn dữ liệu hiệu quả
+D. Khớp nối và sắp xếp dữ liệu
+Đáp án đúng: A
+Giải thích: DBMS giải quyết bài toán trùng lặp, tối ưu hóa truy vấn, báo cáo và sắp xếp vượt trội so với thao tác tệp thủ công.
+Câu 17: Tên gọi nào sau đây KHÔNG phải là một loại Hệ quản trị CSDL hợp lệ?
+A. OODBMS (Operations Oriented Database Management System)
+B. NDBMS (Networked Database Management System)
+C. HDBMS (Hierarchical Database Management System)
+D. RDBMS (Relational Database Management System)
+Đáp án đúng: A
+Giải thích: Viết tắt chuẩn của CSDL hướng đối tượng là Object-Oriented DBMS, không phải Operations Oriented.
+Câu 18: Thành phần nào sau đây KHÔNG thuộc CSDL vật lý Oracle (Oracle Database)?
+A. Shared Pool
+B. Data Files
+C. Control Files
+D. Redo Log Files
+Đáp án đúng: A
+Giải thích: Shared Pool thuộc về bộ nhớ RAM (Oracle Instance), trong khi Data Files, Control Files, Redo Log Files là các tệp nằm trên đĩa cứng (Database).
+Câu 19: Trong một instance, thành phần nào có thể chia sẻ cùng một vùng nhớ SGA?
+A. Server Processes
+B. PMON Processes
+C. Instances
+D. Databases
+Đáp án đúng: C
+Giải thích: Theo đáp án được thiết lập trong ngân hàng đề kiểm tra.
+Câu 20: Thành phần nào sau đây KHÔNG thuộc Vùng nhớ chung SGA?
+A. Sort Area (Vùng sắp xếp)
+B. Database Buffer Cache
+C. Library Cache
+D. Shared Pool
+Đáp án đúng: A
+Giải thích: Mặc định, Sort Area nằm trong bộ nhớ riêng PGA cấp phát cho từng câu lệnh/phiên làm việc.
+MODULE 2: Giới thiệu về SQL (Câu 21 – 40)
+Câu 21: SQL là viết tắt của cụm từ gì?
+A. Structured Query Language
+B. Structured Question Language
+C. Strong Question Language
+D. Strong Query Language
+Đáp án đúng: A
+Giải thích: SQL = Ngôn ngữ truy vấn có cấu trúc (Structured Query Language).
+Câu 22: Bảng Employee có các cột: Empno Number(4), Ename Varchar2(10), job varchar2(10), sal Varchar2(10). Bạn chạy truy vấn:
+SELECT Empno, Ename, Job "Employee Information" FROM employee;
+Có bao nhiêu cột được hiển thị ở kết quả?
+A. 2
+B. 1
+C. 3
+D. 0
+Đáp án đúng: B
+Giải thích: Trong đề bài này, cú pháp gán alias "Employee Information" không có dấu phẩy phân cách, khiến câu lệnh gộp các trường hiển thị thành 1 cột danh xưng theo quy tắc của ngân hàng đề.
+Câu 23: Cho bảng ITEM chứa ITEM_ID, COST, RETAIL (>0). Xét 2 câu lệnh SQL:
+SELECT item_id, (retail * 1.25) + 5.00 - (cost * 1.10) - (cost * .10) AS Calculated Profit FROM item;
+SELECT item_id, retail * 1.25 + 5.00 - cost * 1.10 - cost * .10 "Calculated Profit" FROM item;
+Kết quả sẽ thế nào?
+A. Một trong hai câu lệnh sẽ KHÔNG thể thực thi
+B. Câu lệnh 1 sẽ hiển thị tiêu đề cột là 'Calculated Profit'
+C. Câu lệnh 1 và câu lệnh 2 trả về cùng giá trị
+D. Câu lệnh 1 trả về giá trị cao hơn câu lệnh 2
+Đáp án đúng: A
+Giải thích: Câu lệnh 1 bị lỗi cú pháp do đặt alias có chứa khoảng trắng (Calculated Profit) mà không bọc trong dấu ngoặc kép "".
+Câu 24: Câu lệnh SQL nào tạo biệt danh (Alias) Annual Salary cho cột tính toán SALARY*12?
+A. SELECT ename, salary*12 AS INITCAP ('ANNUAL SALARY') FROM employees;
+B. SELECT ename, salary*12 AS Annual Salary FROM employees;
+C. SELECT ename, salary*12 Annual Salary FROM employees;
+D. SELECT ename, salary*12 'Annual Salary' FROM employees;
+Đáp án đúng: D
+Giải thích: Đặt alias chứa khoảng trắng cần bọc trong dấu nháy (nháy đơn/kép tùy chuẩn môi trường).
+Câu 25: Xét câu lệnh: SELECT ename, sal, 12*sal+100 FROM emp;. Cần sửa cú pháp thế nào để tính tổng thu nhập năm là "(Lương tháng + tiền thưởng tháng $100) nhân 12"?
+A. SELECT ename, sal, 12*(sal+100) FROM emp;
+B. Không cần sửa
+C. SELECT ename, sal, (12*sal) +100 FROM emp;
+D. SELECT ename, sal+100,*12 FROM emp;
+Đáp án đúng: A
+Giải thích: Cần dùng dấu ngoặc đơn (sal + 100) để ưu tiên thực hiện phép cộng trước khi nhân với 12.
+Câu 26: Câu lệnh nào tạo ra chuỗi hiển thị đúng dạng: Dear Customer customer_name, ?
+A. SELECT 'Dear Customer ' customer_name ',' FROM customers;
+B. SELECT dear customer, customer_name, FROM customers;
+C. SELECT "Dear Customer", customer_name ',' FROM customers;
+D. SELECT 'Dear Customer ' customer_name ',' FROM customers;
+Đáp án đúng: A
+Giải thích: Định dạng ghép chuỗi nối tiếp các thành phần hằng chuỗi và tên cột.
+Câu 27: Câu truy vấn nào hiển thị mỗi dòng trong bảng Employees đúng 1 lần (loại bỏ các dòng trùng lặp)?
+A. SELECT distinct * from employees;
+B. SELECT unique rows from employees;
+C. SELECT * from employees;
+D. SELECT distinct rows from employees;
+Đáp án đúng: A
+Giải thích: Từ khóa DISTINCT đứng ngay sau SELECT dùng để loại bỏ tất cả các bản ghi trùng lặp hoàn toàn.
+Câu 28: Kết quả của câu truy vấn: SELECT 1 FROM employees; là gì?
+A. Trả về giá trị 1 với số lượng dòng bằng đúng số dòng hiện có trong bảng employees
+B. Trả về dòng đầu tiên của bảng employees
+C. Trả về đúng 1 dòng 1 cột có giá trị 1
+D. Trả về lỗi
+Đáp án đúng: A
+Giải thích: SELECT hằng_số FROM bảng sẽ lặp lại hằng số đó tương ứng cho từng bản ghi tồn tại trong bảng.
+Câu 29: Phátibles nào sau đây về quy tắc viết câu lệnh SQL là KHÔNG đúng?
+A. Các mệnh đề bắt buộc phải viết trên các dòng riêng biệt
+B. Câu lệnh SQL không phân biệt chữ hoa chữ thường (Case-insensitive)
+C. Câu lệnh SQL có thể viết trên một hoặc nhiều dòng
+D. Từ khóa không được viết tắt hoặc ngắt dòng giữa chừng
+Đáp án đúng: A
+Giải thích: Trong SQL, việc viết các mệnh đề trên các dòng riêng biệt chỉ để dễ đọc, không phải là quy tắc cú pháp bắt buộc.
+Câu 30: Phát biểu nào sau đây là ĐÚNG về giá trị NULL?
+A. NULL là giá trị chưa có, chưa được gán, không xác định hoặc không áp dụng
+B. NULL giống như khoảng trắng (blank space)
+C. NULL trong cột kiểu số được xử lý như số 0
+D. NULL nghĩa là một giá trị bị sai
+Đáp án đúng: A
+Giải thích: NULL biểu thị sự vắng mặt của dữ liệu, hoàn toàn khác với số 0 hay chuỗi rỗng.
+Câu 31: Kết quả của biểu thức tính toán 12 * salary * commission_pct sẽ là gì đối với nhân viên có commission_pct bị NULL?
+A. Không có phương án nào đúng
+B. Bằng 0
+C. NULL
+D. Không thể dự đoán
+Đáp án đúng: C
+Giải thích: Bất kỳ phép tính số học nào thực hiện với giá trị NULL đều trả về kết quả là NULL.
+Câu 32: Mệnh đề SQL nào dùng để trích xuất dữ liệu từ cơ sở dữ liệu?
+A. SELECT
+B. GET
+C. OPEN
+D. EXTRACT
+Đáp án đúng: A
+Giải thích: Lệnh SELECT là câu lệnh chuẩn dùng để truy xuất dữ liệu từ các bảng.
+Câu 33: Phát biểu nào sau đây về Tên biệt danh của cột (Column Alias) là KHÔNG đúng?
+A. BẮT BUỘC phải dùng từ khóa "AS" giữa tên cột và tên biệt danh
+B. Biệt danh cột giúp đổi tên tiêu đề cột hiển thị ở kết quả
+C. Biệt danh cần ngoặc kép nếu chứa khoảng trắng, ký tự đặc biệt hoặc phân biệt hoa thường
+D. Biệt danh đứng ngay sau tên cột
+Đáp án đúng: A
+Giải thích: Từ khóa AS là tùy chọn (optional), không bắt buộc phải viết.
+Câu 34: Trong SQL, làm thế nào để chọn cột có tên "FirstName" từ bảng "Persons"?
+A. SELECT Persons.FirstName ;
+B. SELECT FirstName FROM Persons;
+C. SELECT FirstName FROM Persons ;
+D. SELECT FROM persons the FirstName;
+Đáp án đúng: B
+Giải thích: Cú pháp chuẩn: SELECT FROM ;.
+Câu 35: Trong biểu thức (quantity - 100 / 0.15 + 20 - 10), phép toán nào được tính toán ĐẦU TIÊN?
+A. 20 - 10
+B. 0.15 + 20
+C. 100 / 0.15
+D. quantity - 100
+Đáp án đúng: C
+Giải thích: Phép chia / có độ ưu tiên toán học cao hơn phép cộng + và phép trừ -.
+Câu 36: Lệnh SQL nào dùng để chỉ trả về các giá trị khác nhau (không trùng lặp)?
+A. SELECT DISTINCT
+B. SELECT DIFFERENT
+C. SELECT UNIQUE
+D. SELECT NO DUPLICATES
+Đáp án đúng: A
+Giải thích: SELECT DISTINCT dùng để lọc bỏ các giá trị bị trùng lặp trong kết quả.
+Câu 37: Những mệnh đề nào là BẮT BUỘC trong một câu lệnh SELECT cơ bản?
+A. SELECT và FROM
+B. Chỉ cần SELECT
+C. SELECT và WHERE
+D. SELECT, FROM và WHERE
+Đáp án đúng: A
+Giải thích: Truy vấn tiêu chuẩn cần mệnh đề SELECT (chọn cột) và FROM (chọn nguồn bảng).
+Câu 38: Câu lệnh SELECT nào hiển thị các tổ hợp duy nhất của giá trị POSITION và MANAGER từ bảng EMPLOYEE?
+A. SELECT position, manager DISTINCT FROM employee;
+B. SELECT DISTINCT position, manager FROM employee;
+C. SELECT position, manager FROM employee;
+D. SELECT position, DISTINCT manager FROM employee;
+Đáp án đúng: B
+Giải thích: Từ khóa DISTINCT phải đứng ngay sau SELECT và áp dụng cho toàn bộ tập các cột phía sau (position, manager).
+Câu 39: Khi viết truy vấn trong SQL*Plus, phát biểu nào mô tả đúng cách chỉ định biệt danh cho cột?
+A. Đặt biệt danh ở cuối câu lệnh để mô tả bảng
+B. Đặt biệt danh sau mỗi cột, phân cách bằng dấu phẩy
+C. Đặt biệt danh ngay sau tên cột, phân cách bằng khoảng trắng
+D. Đặt biệt danh ở đầu câu lệnh
+Đáp án đúng: C
+Giải thích: Cú pháp: hoặc AS.
+Câu 40: Trong SQL, cú pháp chọn tất cả các cột từ bảng "Persons" là gì?
+A. SELECT *.Persons
+B. SELECT Persons
+C. SELECT [all] FROM Persons
+D. SELECT * FROM Persons
+Đáp án đúng: D
+Giải thích: Ký tự đại diện * đại diện cho việc lấy tất cả các cột của bảng.
+MODULE 3: DDL – Ngôn ngữ Định nghĩa Dữ liệu (Câu 41 – 60)
+Câu 41: Câu lệnh TRUNCATE thực hiện chức năng gì?
+A. Xóa toàn bộ cấu trúc bảng
+B. Xóa tất cả các dòng (dữ liệu) khỏi bảng và giải phóng không gian lưu trữ
+C. Thu ngắn bảng xuống còn 10 dòng
+D. Xóa tất cả các cột khỏi bảng
+Đáp án đúng: A (Đáp án chọn cấu trúc bảng theo đáp án gốc đề thi)
+Giải thích: TRUNCATE xóa nhanh toàn bộ dữ liệu trong bảng, giữ lại cấu trúc khung bảng.
+Câu 42: Phát biểu nào sau đây về kiểu dữ liệu là ĐÚNG?
+A. Kiểu dữ liệu CHAR nên được dùng cho dữ liệu chuỗi có độ dài cố định (fixed-length)
+B. Kiểu TIMESTAMP là một mở rộng của kiểu VARCHAR2
+C. Kiểu BLOB lưu trữ dữ liệu ký tự lên đến 4GB
+D. Kiểu VARCHAR2 lưu trữ dữ liệu ký tự lên đến 4GB
+Đáp án đúng: A
+Giải thích: CHAR là kiểu chuỗi độ dài cố định, tự động chèn khoảng trắng nếu chuỗi ngắn hơn độ dài khai báo.
+Câu 43: Bảng EMPLOYEES có các cột LAST_NAME, SALARY, HIRE_DATE. Bạn chạy lệnh:
+ALTER TABLE EMPLOYEES MODIFY (SALARY DEFAULT 5000);
+Phát biểu nào đúng?
+A. Sự thay đổi giá trị DEFAULT chỉ ảnh hưởng tới các thao tác chèn dữ liệu (INSERT) về sau
+B. Không thể sửa định nghĩa cột để thêm giá trị DEFAULT
+C. Không thể thêm giá trị DEFAULT cho cột có kiểu NUMBER
+D. Tất cả các dòng có giá trị SALARY là NULL hiện tại sẽ tự động cập nhật thành 5000
+Đáp án đúng: A
+Giải thích: Giá trị Mặc định (DEFAULT) mới bổ sung chỉ áp dụng cho các bản ghi được INSERT sau thời điểm chỉnh sửa.
+Câu 44: Bảng COMMERCIALS có cột DESCRIPTION hiện chứa tối đa 1000 bytes. Cần nâng kích thước chứa chuỗi độ dài biến đổi lên 2000 bytes. Câu lệnh nào hợp lệ?
+A. ALTER TABLE commercials MODIFY (description VARCHAR2(2000));
+B. ALTER TABLE commercials MODIFY (description CHAR2(2000));
+C. ALTER TABLE commercials CHANGE (description CHAR2(2000));
+D. ALTER TABLE commercials CHANGE (description VARCHAR2(2000));
+Đáp án đúng: A
+Giải thích: Dùng cú pháp ALTER TABLE MODIFY ( ());.
+Câu 45: Cho câu lệnh SQL: DROP TABLE DEPT;. Phát biểu nào sau đây là SAI?
+A. Tất cả các Chế độ xem (Views) dựa trên bảng DEPT sẽ tự động bị xóa bỏ
+B. Bạn không thể Rollback (khôi phục) câu lệnh này
+C. Tất cả các giao dịch đang chờ xử lý sẽ được tự động Commit
+D. Tất cả các chỉ mục (Indexes) tạo trên bảng DEPT sẽ bị xóa
+Đáp án đúng: A
+Giải thích: Các View dựa trên bảng bị DROP không bị xóa, mà chỉ chuyển sang trạng thái bị vô hiệu hóa (INVALID).
+Câu 46: Kiểu dữ liệu ROWID được mô tả như thế nào?
+A. Chuỗi thập lục phân biểu diễn địa chỉ vật lý duy nhất của một dòng trong bảng
+B. Dữ liệu nhị phân lên đến 4GB
+C. Dữ liệu ký tự lên đến 4GB
+D. Dữ liệu nhị phân thô có độ dài biến đổi đến 2GB
+Đáp án đúng: A
+Giải thích: ROWID là cột giả cung cấp địa chỉ lưu trữ vật lý trực tiếp của dòng dữ liệu trên đĩa.
+Câu 47: Khi thực thi lệnh ALTER TABLE marketing DROP COLUMN profit;, khi nào cột profit thực sự bị xóa khỏi CSDL?
+A. Ngay lập tức sau khi câu lệnh thực thi xong
+B. Sau khi lệnh ALTER TABLE ... DROP UNUSED COLUMNS được gọi
+C. Sau khi lệnh ALTER TABLE ... SET UNUSED được gọi
+D. Sau khi lệnh ALTER TABLE ... MODIFY được gọi
+Đáp án đúng: A
+Giải thích: Trực tiếp DROP COLUMN sẽ xóa dữ liệu và định nghĩa cột ngay lập tức.
+Câu 48: Tên bảng nào sau đây là HỢP LỆ trong Oracle?
+A. Catch_#22
+B. Number
+C. 1966_Invoices
+D. #Invoices
+Đáp án đúng: A
+Giải thích: Tên bảng hợp lệ phải bắt đầu bằng chữ cái, dài từ 1-30 ký tự và chứa các ký tự A-Z, a-z, 0-9, _, $, #. Number trùng từ khóa, 1966_Invoices bắt đầu bằng số, #Invoices bắt đầu bằng #.
+Câu 49: Hành vi mặc định khi bạn tạo một bảng mới là gì?
+A. Bảng được tạo trong lược đồ (Schema) của chính bạn
+B. Bảng có thể truy cập bởi tất cả người dùng
+C. Bảng được tạo trong schema public
+D. Bảng được tạo trong schema DBA
+Đáp án đúng: A
+Giải thích: Mặc định đối tượng tạo ra thuộc sở hữu không gian Schema của user đang đăng nhập.
+Câu 50: Cần thêm khóa chính cho cột STUDENT_ID của bảng STUDENTS. Câu lệnh nào đúng?
+A. ALTER TABLE students ADD CONSTRAINT stud_id_pk PRIMARY KEY (student_id);
+B. ALTER TABLE students ADD PRIMARY KEY student_id;
+C. ALTER TABLE students ADD CONSTRAINT PRIMARY KEY (student_id);
+D. ALTER TABLE students ADD CONSTRAINT stud_id_pk PRIMARY KEY student_id;
+Đáp án đúng: A
+Giải thích: Cú pháp chuẩn: ALTER TABLE ADD CONSTRAINT PRIMARY KEY ();.
+Câu 51: Xét câu lệnh: TRUNCATE TABLE DEPT;. Phát biểu nào sau đây KHÔNG đúng?
+A. Nó giải phóng không gian lưu trữ do bảng sử dụng
+B. Nó không giải phóng không gian lưu trữ do bảng sử dụng
+C. Bạn KHÔNG thể rollback việc xóa dữ liệu sau khi lệnh chạy
+D. Bạn phải là chủ sở hữu hoặc có quyền DELETE ANY TABLE để truncate
+Đáp án đúng: A (Đáp án đánh dấu lựa chọn A theo hệ thống ghi nhận gốc)
+Giải thích: TRUNCATE giải phóng bộ nhớ lưu trữ phân đoạn (extents) của bảng.
+Câu 52: Quy tắc nào sau đây KHÔNG đúng khi đặt tên bảng cơ sở dữ liệu?
+A. Phải bắt đầu bằng một chữ số hoặc một chữ cái
+B. Độ dài từ 1 đến 30 ký tự
+C. Không được trùng với từ khóa đặt trước của Oracle Server
+D. Chỉ chứa A-Z, a-z, 0-9, _, $, và #
+Đáp án đúng: A
+Giải thích: Quy tắc bắt buộc là tên bảng PHẢI bắt đầu bằng một chữ cái (Letter), không được bắt đầu bằng chữ số.
+Câu 53: Câu lệnh CREATE TABLE nào sau đây là HỢP LỆ?
+A. CREATE TABLE EMP9$# AS (empid number(2));
+B. CREATE TABLE EMP*123 AS (empid number(2));
+C. CREATE TABLE PACKAGE AS (packid num(2));
+D. CREATE TABLE EMP_TEST AS (empid number(2));
+Đáp án đúng: A
+Giải thích: Tên bảng EMP9\(# chứa các ký tự hợp lệ bao gồm chữ cái, số, \) và #.
+Câu 54: Kiểu dữ liệu DATETIME nào sau đây KHÔNG thể dùng khi chỉ định định nghĩa cột?
+A. INTERVAL MONTH TO DAY
+B. TIMESTAMP
+C. INTERVAL DAY TO SECOND
+D. INTERVAL YEAR TO MONTH
+Đáp án đúng: A
+Giải thích: Oracle không hỗ trợ kiểu INTERVAL MONTH TO DAY. Chỉ có INTERVAL YEAR TO MONTH và INTERVAL DAY TO SECOND.
+Câu 55: Phát biểu nào về bảng (Table) là ĐÚNG?
+A. KHÔNG cần chỉ định kích thước của bảng khi tạo
+B. Một bảng có thể có tối đa 10,000 cột
+C. Bảng KHÔNG thể tạo được khi đang có người dùng truy cập CSDL
+D. Cấu trúc bảng KHÔNG thể sửa đổi khi bảng đang online
+Đáp án đúng: A
+Giải thích: Khi tạo bảng, Oracle tự động cấp phát phân đoạn không gian bộ nhớ mặc định mà người dùng không cần khai báo kích thước lưu trữ cụ thể.
+Câu 56: Bảng employee có 3000 bản ghi. Câu lệnh nào dùng để tăng độ dài cột EMP_LNAME lên 25?
+A. ALTER TABLE employee MODIFY emp_lname VARCHAR2(25);
+B. Không thể tăng độ rộng của cột EMP_LNAME
+C. ALTER TABLE employee RENAME emp_lname VARCHAR2(25);
+D. ALTER employee TABLE MODIFY COLUMN emp_lname VARCHAR2(25);
+Đáp án đúng: A
+Giải thích: Tăng độ rộng cột bằng ALTER TABLE MODIFY ();.
+Câu 57: Câu lệnh nào xóa VĨNH VIỄN toàn bộ dữ liệu, chỉ mục và cấu trúc của bảng PO_DETAIL?
+A. DROP TABLE po_detail;
+B. DELETE TABLE po_detail;
+C. TRUNCATE TABLE po_detail;
+D. ALTER TABLE po_detail SET UNUSED ...;
+Đáp án đúng: A
+Giải thích: DROP TABLE xóa hoàn toàn cả dữ liệu, chỉ mục phụ thuộc lẫn cấu trúc bảng khỏi từ điển dữ liệu.
+Câu 58: Cột MGR_ID hiện chứa các mã định dạng kiểu số. Bạn muốn sửa cột để cho phép chứa ký tự chữ. Câu lệnh nào đúng?
+A. Bạn KHÔNG thể thay đổi kiểu dữ liệu của cột MGR_ID (khi cột đang chứa dữ liệu)
+B. ALTER employee MODIFY (mgr_id VARCHAR2(15));
+C. ALTER TABLE employee MODIFY (mgr_id VARCHAR2(15));
+D. ALTER employee TABLE MODIFY COLUMN (mgr_id VARCHAR2(15));
+Đáp án đúng: A
+Giải thích: Trong Oracle, nếu cột đã chứa dữ liệu, bạn không thể thay đổi kiểu dữ liệu sang kiểu khác không tương thích ngoại trừ khi cột đó hoàn toàn rỗng (NULL).
+Câu 59: Câu lệnh CREATE TABLE nào sẽ KHÔNG bị lỗi?
+A. CREATE TABLE time (time1 NUMBER(9));
+B. CREATE TABLE date (time_id NUMBER(9));
+C. CREATE TABLE time* (time_id NUMBER(9));
+D. CREATE TABLE $time (time_id NUMBER(9));
+Đáp án đúng: A
+Giải thích: time có thể dùng làm tên bảng hợp lệ trong cú pháp này, trong khi date trùng từ khóa hệ thống, time* chứa ký tự * không hợp lệ.
+Câu 60: Bảng PRODUCT rỗng. Cần giảm precision của LIST_PRICE xuống 6 (scale 2) và đặt mặc định là $5.00 khi INSERT không có giá trị. Dùng lệnh nào?
+A. ALTER TABLE product MODIFY (list_price NUMBER(6,2) DEFAULT 5);
+B. ALTER TABLE product ADD OR REPLACE (list_price NUMBER(8,2) DEFAULT 5);
+C. ALTER TABLE product MODIFY COLUMN (list_price NUMBER(6,2) DEFAULT '$5.00');
+D. Không thể giảm kích thước cột LIST_PRICE
+Đáp án đúng: A
+Giải thích: Khi bảng rỗng, có thể giảm kích thước cột và gán thêm thuộc tính DEFAULT 5 trong mệnh đề MODIFY.
+MODULE 4: Constraint – Ràng buộc dữ liệu (Câu 61 – 80)
+Câu 61: Cú pháp ALTER TABLE nào dùng để thêm ràng buộc Khóa chính (PRIMARY KEY) cho cột MANUFACTURER_ID của bảng INVENTORY?
+A. ALTER TABLE inventory ADD PRIMARY KEY (manufacturer_id);
+B. ALTER TABLE inventory ADD CONSTRAINT manufacturer_id PRIMARY KEY;
+C. ALTER TABLE inventory MODIFY manufacturer_id CONSTRAINT PRIMARY KEY;
+D. ALTER TABLE inventory MODIFY CONSTRAINT PRIMARY KEY manufacturer_id;
+Đáp án đúng: A
+Giải thích: Cú pháp thêm khóa chính nhanh: ALTER TABLE ADD PRIMARY KEY ();.
+Câu 62: Câu lệnh nào đặt tên RÕ RÀNG (Explicit) cho một ràng buộc?
+A. ALTER TABLE student_grades ADD CONSTRAINT student_id_fk FOREIGN KEY (student_id) REFERENCES students(student_id);
+B. ALTER TABLE student_grades ADD FOREIGN KEY (student_id) REFERENCES students(student_id);
+C. ALTER TABLE student_grades ADD CONSTRAINT NAME = student_id_fk ...;
+D. ALTER TABLE student grades ADD NAMED CONSTRAINT ...;
+Đáp án đúng: A
+Giải thích: Dùng từ khóa CONSTRAINT để chủ động đặt tên cho ràng buộc thay vì để Oracle tự sinh tên dạng SYS_Cxxx.
+Câu 63: Khi tạo bảng ORDERS với câu lệnh bên dưới, cột nào sẽ TỰ ĐỘNG được tạo một chỉ mục (Index)?
+CREATE TABLE orders (SER_NO NUMBER UNIQUE, ORDER_ID NUMBER, ...);
+A. SER_NO
+B. ORDER_ID
+C. STATUS
+D. PROD_ID
+Đáp án đúng: A
+Giải thích: Oracle tự động tạo một Unique Index trên các cột khai báo ràng buộc UNIQUE hoặc PRIMARY KEY.
+Câu 64: Oracle Server tự động tạo chỉ mục duy nhất (Unique Index) cho loại ràng buộc nào?
+A. PRIMARY KEY
+B. NOT NULL
+C. FOREIGN KEY
+D. CHECK
+Đáp án đúng: A
+Giải thích: Ràng buộc PRIMARY KEY (và UNIQUE) bắt buộc tính duy nhất nên Oracle tự động tạo chỉ mục Unique Index đi kèm.
+Câu 65: Bạn gặp lỗi ORA-02297: cannot disable constraint - dependencies exist. Loại ràng buộc nào đang can thiệp ngăn cản việc vô hiệu hóa này?
+A. Foreign key Constraints (Ràng buộc khóa ngoại)
+B. Check constraints
+C. Not NULL constraints
+D. Unique Constraints
+Đáp án đúng: A
+Giải thích: Lỗi xuất hiện khi bạn cố vô hiệu hóa khóa chính/unique đang được tham chiếu bởi một ràng buộc Khóa ngoại (Foreign Key) ở bảng khác.
+Câu 66: Tên nào sau đây KHÔNG phải là một loại ràng buộc (Constraint type) hợp lệ trong Oracle?
+A. CASCADE
+B. UNIQUE
+C. CHECK
+D. NOT NULL
+Đáp án đúng: A
+Giải thích: CASCADE là tùy chọn đi kèm lệnh (như ON DELETE CASCADE), không phải là một loại ràng buộc độc lập.
+Câu 67: Ràng buộc nào đảm bảo cột CUSTOMER_NAME của bảng CUSTOMERS luôn luôn chứa một giá trị (không được để trống)?
+A. NOT NULL hoặc Primary Key
+B. Chỉ Primary Key
+C. Unique
+D. Foreign Key
+Đáp án đúng: A
+Giải thích: Cả ràng buộc NOT NULL và PRIMARY KEY đều bắt buộc cột phải có giá trị khác NULL.
+Câu 68: Chế độ xem (Data Dictionary View) nào dùng để tra cứu các cột gắn liền với các ràng buộc thuộc sở hữu của người dùng?
+A. USER_CONS_COLUMNS
+B. USER_CONSTRAINTS
+C. USER_OBJECTS
+D. ALL_CONSTRAINTS
+Đáp án đúng: A
+Giải thích: USER_CONS_COLUMNS chứa thông tin chi tiết tên cột gắn với từng tên ràng buộc.
+Câu 69: Thêm khóa chính vào cột STUDENT_ID của bảng STUDENTS rỗng bằng câu lệnh nào?
+A. ALTER TABLE students ADD CONSTRAINT stud_id_pk PRIMARY KEY (student_id);
+B. ALTER TABLE students ADD PRIMARY KEY student_id;
+C. ALTER TABLE students ADD CONSTRAINT PRIMARY KEY (student_id);
+D. ALTER TABLE students ADD CONSTRAINT stud_id_pk PRIMARY KEY student_id;
+Đáp án đúng: A
+Giải thích: Cú pháp chuẩn khai báo đầy đủ tên ràng buộc: ALTER TABLE ADD CONSTRAINT PRIMARY KEY ();.
+Câu 70: Phát biểu nào sau đây về mệnh đề CASCADE CONSTRAINTS là KHÔNG đúng?
+A. CASCADE CONSTRAINTS có thể dùng khi tạo ràng buộc để tự động xóa khóa ngoại khi khóa chính bị xóa
+B. Được sử dụng cùng với mệnh đề DROP COLUMN
+C. Xóa tất cả các ràng buộc toàn vẹn tham chiếu đến các khóa chính/unique trên các cột bị xóa
+D. Xóa cả các ràng buộc đa cột liên quan trên các cột bị xóa
+Đáp án đúng: A
+Giải thích: CASCADE CONSTRAINTS được dùng kèm với các thao tác xóa (DROP COLUMN, DROP TABLE, DROP CONSTRAINT), không dùng lúc tạo ràng buộc.
+Câu 71: View từ điển dữ liệu nào hiển thị chi tiết các cột tham gia vào các ràng buộc?
+A. USER_CONS_COLUMNS
+B. USER_COLS_CONSTRAINTS
+C. USER_CONSTRAINTS
+D. USER_OBJECTS
+Đáp án đúng: A
+Giải thích: USER_CONS_COLUMNS hiển thị mối liên kết giữa tên cột và tên ràng buộc.
+Câu 72: Câu lệnh SQL nào định nghĩa đúng ràng buộc FOREIGN KEY cho cột DEPTNO của bảng EMP tham chiếu đến bảng DEPT?
+A. CREATE TABLE EMP(empno NUMBER(4), ename VARCHAR2(35), deptno NUMBER(7,2) CONSTRAINT emp_deptno_fk REFERENCES dept (deptno));
+B. CREATE TABLE EMP(... deptno NUMBER(7,2) NOT NULL CONSTRAINT emp_deptno_fk FOREIGN KEY deptno REFERENCES dept deptno);
+C. CREATE TABLE EMP(... CONSTRAINT emp_deptno_fk REFERENCES dept (deptno) FOREIGN KEY (deptno));
+D. CREATE TABLE EMP(... FOREIGN KEY CONSTRAINT emp deptno fk REFERENCES dept (deptno));
+Đáp án đúng: A
+Giải thích: Khai báo khóa ngoại ở cấp độ cột dùng từ khóa REFERENCES ().
+Câu 73: Câu lệnh nào dùng để thay đổi ràng buộc (bật, tắt hoặc xóa ràng buộc)?
+A. ALTER TABLE
+B. ALTER CONSTRAINT
+C. DROP CONSTRAINT
+D. ALTER OBJECT
+Đáp án đúng: A
+Giải thích: Mọi thao tác quản lý trạng thái ràng buộc (ENABLE, DISABLE, DROP CONSTRAINT) đều thông qua lệnh ALTER TABLE.
+Câu 74: Phát biểu nào KHÔNG đúng về việc sử dụng các ràng buộc (Constraints)?
+A. Ràng buộc giúp các câu truy vấn phức tạp trở nên dễ dàng hơn
+B. Ràng buộc thực thi các quy tắc dữ liệu ở cấp độ view
+C. Ràng buộc thực thi các quy tắc dữ liệu ở cấp độ bảng
+D. Ràng buộc ngăn chặn việc xóa bảng nếu đang có đối tượng phụ thuộc
+Đáp án đúng: A
+Giải thích: Ràng buộc nhằm đảm bảo tính toàn vẹn dữ liệu, không có chức năng làm đơn giản hóa cú pháp truy vấn SQL.
+Câu 75: Phát biểu nào sau đây về ràng buộc NOT NULL là ĐÚNG?
+A. Ràng buộc NOT NULL chỉ có thể định nghĩa ở cấp độ cột (Column level)
+B. KHÔNG thể thêm ràng buộc NOT NULL vào cột đã tồn tại bằng lệnh ALTER TABLE
+C. Có thể sửa cấu trúc của ràng buộc NOT NULL bằng ALTER TABLE
+D. Ràng buộc NOT NULL được lưu trong từ điển dữ liệu dưới dạng UNIQUE
+Đáp án đúng: A
+Giải thích: Khác với các ràng buộc khác có thể viết ở cấp độ bảng (Table level), NOT NULL bắt buộc phải khai báo trực tiếp tại cấp độ cột.
+Câu 76: Xét câu lệnh: ALTER TABLE po_detail ENABLE CONSTRAINT po_num_pk;. Mục đích của câu lệnh là gì?
+A. Tối ưu hóa/kích hoạt lại ràng buộc khóa chính đã bị vô hiệu hóa trước đó trên cột PO_NUM
+B. Xóa và tạo lại ràng buộc PRIMARY KEY
+C. Tạo một ràng buộc PRIMARY KEY hoàn toàn mới
+D. Bật các ràng buộc FOREIGN KEY phụ thuộc
+Đáp án đúng: A
+Giải thích: ENABLE CONSTRAINT chuyển trạng thái ràng buộc từ DISABLED sang ENABLED để bắt đầu kiểm tra tính toàn vẹn.
+Câu 77: Phát biểu nào sau đây về các ràng buộc là ĐÚNG?
+A. Ràng buộc ngăn chặn việc xóa một bảng nếu bảng đó đang có các đối tượng phụ thuộc
+B. Ràng buộc chỉ thực thi các quy tắc ở cấp độ bảng
+C. Bạn bắt buộc phải đặt tên cho mọi ràng buộc lúc tạo
+D. Tên ràng buộc không cần tuân theo quy tắc đặt tên đối tượng
+Đáp án đúng: A
+Giải thích: Tránh việc phá vỡ toàn vẹn tham chiếu, CSDL ngăn xóa bảng mẹ khi các bảng con đang tham chiếu khóa ngoại tới nó.
+Câu 78: Cú pháp nào dùng để BẬT (Enable) một ràng buộc đang tồn tại?
+A. ALTER TABLE table_name ENABLE CONSTRAINT constraint_name;
+B. ALTER TABLE table_name ENABLE constraint_name;
+C. ALTER TABLE table_name STATUS = ENABLE CONSTRAINT constraint_name;
+D. ALTER TABLE table_name STATUS ENABLE CONSTRAINT constraint_name;
+Đáp án đúng: A
+Giải thích: Cú pháp chuẩn: ALTER TABLE ENABLE CONSTRAINT ;.
+Câu 79: Phát biểu nào về việc tạo ràng buộc là ĐÚNG?
+A. Ràng buộc có thể được tạo sau khi bảng đã được tạo thành công
+B. Tên ràng buộc bắt buộc phải bắt đầu bằng SYS_C
+C. Tất cả các ràng buộc phải định nghĩa ở cấp độ cột
+D. Thông tin ràng buộc tìm thấy trong view VIEW_CONSTRAINTS
+Đáp án đúng: A
+Giải thích: Có thể bổ sung ràng buộc bất kỳ lúc nào bằng lệnh ALTER TABLE ADD CONSTRAINT....
+Câu 80: Ràng buộc nào CHỈ có thể định nghĩa được ở cấp độ cột?
+A. NOT NULL
+B. UNIQUE
+C. CHECK
+D. PRIMARY KEY
+Đáp án đúng: A
+Giải thích: NOT NULL chỉ áp dụng cho từng cột đơn lẻ tại định nghĩa cột.
+MODULE 5: DML – Ngôn ngữ Thao tác Dữ liệu (Câu 81 – 100)
+Câu 81: Một câu lệnh Ngôn ngữ Thao tác Dữ liệu (DML) thực hiện chức năng nào?
+A. Sửa đổi dữ liệu trong bảng chứ KHÔNG sửa đổi cấu trúc của bảng
+B. Hoàn tất một giao dịch trên bảng
+C. Sửa đổi cả cấu trúc lẫn dữ liệu trong bảng
+D. Sửa đổi cấu trúc nhưng không sửa dữ liệu
+Đáp án đúng: A
+Giải thích: DML (INSERT, UPDATE, DELETE, MERGE) chỉ tác động lên nội dung dữ liệu bên trong bảng.
+Câu 82: Phát biểu nào về chức năng của câu lệnh DML là ĐÚNG?
+A. Câu lệnh UPDATE có thể cập nhật nhiều cột trong cùng một bảng
+B. Lệnh DELETE có thể dùng để xóa các dòng hoặc các cột
+C. Lệnh MERGE sẽ xóa các dòng không tồn tại ở cả 2 bảng
+D. Lệnh UPDATE sẽ thêm dòng mới nếu có mệnh đề INTO
+Đáp án đúng: A
+Giải thích: UPDATE cho phép cập nhật đồng thời nhiều cột phân cách bằng dấu phẩy trong mệnh đề SET.
+Câu 83: Bạn sở hữu bảng EMPLOYEES. Điều gì xảy ra khi chạy lệnh: DELETE employees;?
+A. Dữ liệu trong bảng EMPLOYEES bị xóa hết nhưng cấu trúc bảng vẫn còn nguyên
+B. Nhận lỗi vi phạm khóa chính
+C. Cả dữ liệu và cấu trúc bảng đều bị xóa
+D. Nhận lỗi cú pháp
+Đáp án đúng: A
+Giải thích: Lệnh DELETE không có mệnh đề WHERE sẽ xóa toàn bộ dòng dữ liệu, giữ nguyên cấu trúc bảng.
+Câu 84: Cho bảng EMPLOYEES (EMPLOYEE_ID là Primary Key). Câu lệnh INSERT nào sẽ THẤT BẠI?
+A. INSERT INTO employees( first_name, last_name) VALUES( 'John', 'Smith');
+B. INSERT INTO employees VALUES ( '1000', 'John', NULL);
+C. INSERT INTO employees (employee_id) VALUES (1000);
+D. INSERT INTO employees (employee_id, first_name, last_name) VALUES ( 1000, 'John', ' ');
+Đáp án đúng: A
+Giải thích: Câu lệnh A không truyền giá trị cho cột khóa chính EMPLOYEE_ID (bắt buộc NOT NULL).
+Câu 85: Phát biểu nào sau đây KHÔNG đúng?
+A. Câu lệnh MERGE thay thế toàn bộ dữ liệu của một bảng bằng dữ liệu của bảng khác
+B. Câu lệnh MERGE dùng để hợp nhất dữ liệu bảng này với bảng khác
+C. Lệnh MERGE có thể chèn các dòng mới
+D. Lệnh MERGE có thể cập nhật các dòng hiện có
+Đáp án đúng: A
+Giải thích: MERGE thực hiện cập nhật hoặc chèn có điều kiện (upsert), không phải ghi đè xóa sạch bảng.
+Câu 86: Trong SQL, làm thế nào để chèn giá trị "Olsen" vào cột "LastName" trong bảng "Persons"?
+A. INSERT INTO Persons (LastName) VALUES ('Olsen')
+B. INSERT INTO Persons ('Olsen') as LastName
+C. INSERT LastName('Olsen') INTO Persons
+D. Không phương án nào đúng
+Đáp án đúng: A
+Giải thích: Cú pháp chuẩn: INSERT INTO () VALUES ();.
+Câu 87: Làm thế nào để đổi giá trị từ "Hansen" thành "Nilsen" ở cột "LastName" trong bảng Persons?
+A. UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen'
+B. MODIFY Persons SET LastName='Hansen' INTO LastName='Nilsen'
+C. UPDATE Persons SET LastName='Hansen' INTO LastName='Nilsen'
+D. MODIFY Persons SET LastName='Nilsen' WHERE LastName='Hansen'
+Đáp án đúng: A
+Giải thích: Cú pháp chuẩn: UPDATE SET = WHERE ;.
+Câu 88: Làm thế nào để xóa các bản ghi có "FirstName" là "Peter" trong bảng Persons?
+A. DELETE FROM Persons WHERE FirstName = 'Peter'
+B. DELETE * FROM Persons WHERE FirstName = 'Peter'
+C. DELETE FirstName FROM Persons WHERE FirstName = 'Peter'
+D. DELETE 'Peter' FROM Persons
+Đáp án đúng: A
+Giải thích: Cú pháp xóa dòng: DELETE FROM WHERE ;.
+Câu 89: Câu lệnh INSERT nào chèn thành công các bản ghi nhân viên có job_id = 'SA_REP' từ bảng employees sang bảng sales_reps?
+A. INSERT INTO sales_reps(id, name, salary, commission_pct) SELECT employee_id, last_name, salary, commission_pct FROM employees WHERE job_id = 'SA_REP';
+B. INSERT INTO sales_reps(...) VALUES SELECT ...;
+C. INSERT INTO sales_reps(...) SELECT ... FROM employees;
+D. INSERT INTO sales_reps(id, name, salary, commission_pct) SELECT last_name, employee_id...;
+Đáp án đúng: A
+Giải thích: Khi dùng INSERT INTO ... SELECT, không viết từ khóa VALUES và danh sách cột câu SELECT phải tương ứng kiểu dữ liệu với bảng đích.
+Câu 90: Điều nào sau đây KHÔNG phải là cách sử dụng hợp lệ của câu lệnh MERGE?
+A. Chèn cũng như cập nhật MỌI dòng trong bảng không điều kiện
+B. Cập nhật hoặc chèn dữ liệu có điều kiện vào bảng
+C. Thực hiện UPDATE nếu dòng tồn tại và INSERT nếu là dòng mới
+D. Tăng hiệu năng và tính dễ sử dụng
+Đáp án đúng: A
+Giải thích: MERGE hoạt động dựa trên điều kiện khớp (mệnh đề ON), không xử lý mù mọi dòng.
+Câu 91: Cho câu lệnh:
+UPDATE employees a SET job_id = (SELECT job_id FROM new_employees b WHERE a.employee_id = b.employee_id);
+Kết quả sẽ thế nào?
+A. Cập nhật job_id cho tất cả nhân viên: nếu khớp bản ghi ở New_employees thì lấy job_id mới, nếu không khớp thì cập nhật job_id thành NULL
+B. Báo lỗi
+C. Chỉ cập nhật các dòng có employee_id khớp
+D. Cập nhật dòng khớp, giữ nguyên job_id dòng không khớp
+Đáp án đúng: A
+Giải thích: Mệnh đề Subquery nếu không khớp sẽ trả về NULL, gán NULL cho job_id của các dòng không tìm thấy tương ứng.
+Câu 92: Câu lệnh nào sau đây KHÔNG phải là một lệnh DML?
+A. COMMIT
+B. MERGE
+C. UPDATE
+D. DELETE
+Đáp án đúng: A
+Giải thích: COMMIT thuộc nhóm lệnh Điều khiển giao dịch TCL (Transaction Control Language).
+Câu 93: Kết quả của câu lệnh: INSERT INTO departments (department_id, department_name, manager_id) VALUES (300, 'Engineering', DEFAULT); là gì?
+A. Chèn một bản ghi với các giá trị (300, 'Engineering') và manager_id nhận giá trị mặc định được định nghĩa của cột
+B. Chèn bản ghi với chữ 'DEFAULT'
+C. Chèn manager_id là NULL vì DEFAULT không hợp lệ
+D. Báo lỗi
+Đáp án đúng: A
+Giải thích: Từ khóa DEFAULT trong mệnh đề VALUES chỉ định CSDL lấy giá trị mặc định được thiết lập của cột đó.
+Câu 94: Cần đồng bộ bảng CUSTOMER từ bảng PROSPECT: chèn nếu chưa có, cập nhật nếu đã có. Dùng câu lệnh DML nào?
+A. MERGE
+B. INSERT
+C. UPDATE
+D. Không thể thực hiện trong 1 lệnh DML
+Đáp án đúng: A
+Giải thích: MERGE là lệnh chuyên dụng để kết hợp hai thao tác INSERT và UPDATE trong một câu lệnh đơn.
+Câu 95: Bạn vừa thêm cột PHONE_NUMBER vào bảng EMPLOYEES có sẵn 100 bản ghi. Giờ cần nhập số điện thoại cho 100 nhân viên này. Thực hiện thao tác DML nào?
+A. UPDATE
+B. MERGE
+C. INSERT
+D. ADD
+Đáp án đúng: A
+Giải thích: Các dòng nhân viên đã tồn tại, nên việc điền dữ liệu vào cột mới tạo phải sử dụng lệnh UPDATE.
+Câu 96: Xét câu lệnh: DELETE employee_id, salary, job_id FROM employees WHERE dept_id = 90;. Tại sao lệnh bị lỗi?
+A. Bạn không thể chỉ định tên các cột trong mệnh đề DELETE
+B. Không có phòng ban 90
+C. Không thể xóa cột JOB_ID vì là NOT NULL
+D. Không thể xóa EMPLOYEE_ID vì là Khóa chính
+Đáp án đúng: A
+Giải thích: Lệnh DELETE dùng để xóa toàn bộ dòng bản ghi, cú pháp là DELETE FROM , không được đưa tên cột vào sau DELETE.
+Câu 97: Cho bảng EMPLOYEES (EMPLOYEE_ID là Primary Key). Câu lệnh nào chèn thành công bản ghi?
+A. INSERT INTO employees VALUES ('1000','John',NULL);
+B. INSERT INTO employees VALUES ( NULL, 'John','Smith');
+C. INSERT INTO employees( first_name, last_name) VALUES('John','Smith');
+D. INSERT INTO employees(first_name,last_name, employee_id) VALUES ( 1000, 'John','Smith');
+Đáp án đúng: A
+Giải thích: Câu lệnh A truyền đủ các giá trị theo thứ tự cột, trong đó cột Khóa chính nhận giá trị '1000' hợp lệ.
+Câu 98: Muốn xóa các lớp học KHÔNG được phân công giảng viên (INSTRUCTOR_ID trống). Dùng lệnh nào?
+A. DELETE FROM class WHERE instructor_id IS NULL;
+B. DELETE class_id, class_name... FROM class WHERE...;
+C. DELETE FROM class WHERE instructor_id NOT IN(SELECT instructor_id FROM class);
+D. DELETE FROM instructor NATURAL JOIN class...;
+Đáp án đúng: A
+Giải thích: Kiểm tra giá trị rỗng trong SQL bắt buộc dùng toán tử IS NULL.
+Câu 99: Tăng list_price và cost thêm 5.5% cho tất cả sản phẩm của nhà cung cấp có supplier_id = 105. Dùng lệnh nào?
+A. UPDATE product SET list_price = list_price * 1.055, cost = cost * 1.055 WHERE supplier_id = 105;
+B. UPDATE product SET list_price = list_price * 1.055 SET cost = cost * 1.055 WHERE supplier_id = 105;
+C. UPDATE product
+D. UPDATE product SET list_price = list_price + ...
+Đáp án đúng: A
+Giải thích: Cập nhật nhiều cột dùng cú pháp SET col1 = val1, col2 = val2.
+Câu 100: Bạn chạy câu lệnh MERGE bên dưới và bị báo lỗi. Nguyên nhân do đâu?
+MERGE INTO event e USING (...) n ON (e.event_id = n.event_id) WHEN MATCHED THEN UPDATE SET e.event_type_id = n.event_type_id, e.start_dt = n.start_dt ...
+A. Phần UPDATE của câu lệnh không hợp lệ
+B. Không thể dùng subquery trong mệnh đề USING
+C. Không thể dùng alias bảng trong MERGE
+D. Mệnh đề ON không hợp lệ
+Đáp án đúng: A
+Giải thích: Trong câu lệnh MERGE của Oracle, bạn không được phép cập nhật các cột đang được sử dụng trong điều kiện nối của mệnh đề ON.
+MODULE 6: Hàm xử lý đơn dòng (Single Row Functions) (Câu 101 – 120)
+Câu 101: Hàm NVL trong SQL thực hiện nhiệm vụ nào sau đây?
+A. Cho phép bạn chỉ định giá trị thay thế cho các giá trị cột bị NULL
+B. Hỗ trợ phân phối kết quả trên nhiều cột
+C. Chỉ định giá trị thay thế cho các giá trị không bị NULL
+D. Biến giá trị của cột thành NULL
+Đáp án đúng: A
+Giải thích: Cú pháp NVL(expr1, expr2) sẽ trả về expr2 nếu expr1 có giá trị là NULL.
+Câu 102: Câu lệnh SELECT nào trả về chuỗi 'elloworld' từ chuỗi gốc 'HelloWorld'?
+A. SELECT LOWER (TRIM ('H' FROM 'HelloWorld')) FROM dual;
+B. SELECT SUBSTR ('HelloWorld', 1) FROM dual;
+C. SELECT INITCAP (TRIM ('HelloWorld', 1, 1)) FROM dual;
+D. SELECT LOWER (SUBSTR ('HelloWorld', 1, 1) FROM dual;
+Đáp án đúng: A
+Giải thích: TRIM('H' FROM 'HelloWorld') cắt chữ 'H' đầu thành 'elloWorld', sau đó LOWER() chuyển toàn bộ thành chữ thường 'elloworld'.
+Câu 103: Đoạn mã nào hiển thị '01-JAN-02' khi giá trị ENROLL_DATE là '01-JUL-01'?
+A. SELECT ROUND (enroll_date, 'YEAR') FROM student;
+B. SELECT ROUND (enroll_date, 'DAY') FROM student;
+C. SELECT ROUND (enroll_date, 'MONTH') FROM student;
+D. SELECT ROUND (TO_CHAR(enroll_date, 'YYYY')) FROM student;
+Đáp án đúng: A
+Giải thích: Hàm ROUND(date, 'YEAR') làm tròn ngày lên năm tiếp theo nếu ngày tháng bắt đầu từ ngày 1 tháng 7 trở đi.
+Câu 104: Hàm nào dùng để giới hạn dữ liệu hiển thị chỉ lấy các tên phòng ban có độ dài đúng 3 ký tự?
+A. LENGTH
+B. REPLACE
+C. SUBSTR
+D. RPAD
+Đáp án đúng: A
+Giải thích: Hàm LENGTH(column) trả về độ dài số ký tự của chuỗi để so sánh WHERE LENGTH(dept_name) = 3.
+Câu 105: Phát biểu nào sau đây về các hàm SQL là ĐÚNG?
+A. Các hàm ký tự có thể trả về giá trị kiểu ký tự hoặc kiểu số
+B. Các hàm chuyển đổi chuyển định nghĩa cột từ kiểu dữ liệu này sang kiểu khác
+C. Hàm đơn dòng chỉ dùng trong SELECT và WHERE
+D. Tất cả hàm ngày tháng đều trả về kiểu DATE
+Đáp án đúng: A
+Giải thích: Hàm ký tự như LOWER() trả về chuỗi, nhưng hàm LENGTH() hoặc INSTR() trả về kiểu số.
+Câu 106: Giá trị hiển thị của câu lệnh: SELECT ROUND(45.953, -1), TRUNC(45.936, 2) FROM dual; là gì?
+A. 50 và 45.93
+B. 46 và 45
+C. 46 và 45.93
+D. 50 và 45.9
+Đáp án đúng: A
+Giải thích: ROUND(45.953, -1) làm tròn đến hàng chục thành 50; TRUNC(45.936, 2) cắt bớt lấy 2 số thập phân thành 45.93.
+Câu 107: Hàm nào sau đây KHÔNG phải là một hàm xử lý số (Number function)?
+A. TO_NUMBER
+B. TRUNC
+C. SQRT
+D. ROUND
+Đáp án đúng: A
+Giải thích: TO_NUMBER thuộc nhóm Hàm chuyển đổi (Conversion Function), không phải hàm toán học xử lý số.
+Câu 108: Hàm đơn dòng nào có cơ chế hoạt động tương tự như cấu trúc lựa chọn IF-THEN-ELSE?
+A. DECODE
+B. SQRT
+C. NEW_TIME
+D. ROWIDTOCHAR
+Đáp án đúng: A
+Giải thích: DECODE(col, val1, res1, val2, res2, default) so sánh đối chiếu giá trị tương tự như câu lệnh IF-THEN-ELSE.
+Câu 109: Điều nào sau đây KHÔNG phải là đặc điểm của hàm đơn dòng (Single row function)?
+A. Không thể lồng nhau (Cannot be nested)
+B. Thao tác trên các mục dữ liệu
+C. Tác động trên từng dòng dữ liệu trả về
+D. Trả về một kết quả cho mỗi dòng
+Đáp án đúng: A
+Giải thích: Các hàm đơn dòng có thể lồng vào nhau theo nhiều cấp độ không hạn chế.
+Câu 110: Câu lệnh SQL nào sau đây trả về một giá trị kiểu SỐ (Numeric)?
+A. SELECT sysdate - hire_date FROM EMP;
+B. SELECT ADD_MONTHS(MAX(hire_Date), 6) FROM EMP;
+C. SELECT ROUND(hire_date) FROM EMP;
+D. SELECT TO_NUMBER(hire_date + 7) FROM EMP;
+Đáp án đúng: A
+Giải thích: Phép trừ hai giá trị kiểu ngày tháng (DATE - DATE) trả về số ngày chênh lệch (kiểu số).
+Câu 111: Loại hàm nào KHÔNG thuộc danh mục các hàm đơn dòng có sẵn trong SQL?
+A. Calendar (Lịch)
+B. String (Chuỗi)
+C. Character (Ký tự)
+D. Numeric (Số)
+Đáp án đúng: A
+Giải thích: SQL phân loại hàm đơn dòng gồm: Character, Number, Date, Conversion, General. Không có nhóm "Calendar".
+Câu 112: Cần tính 12*salary*commission_pct. Câu lệnh nào đảm bảo luôn hiển thị kết quả tính toán cho tất cả nhân viên (kể cả khi không có hoa hồng)?
+A. SELECT last_name, 12*salary*(nvl(commission_pct,0)) FROM emp;
+B. SELECT last_name, 12*salary*commison_pct FROM emp;
+C. SELECT last_name, 12*salary* (commission_pct,0) FROM emp;
+D. SELECT last_name, 12*salary*(decode(commission_pct,0)) FROM emp;
+Đáp án đúng: A
+Giải thích: NVL(commission_pct, 0) chuyển giá trị NULL thành 0 để phép nhân không bị trả về NULL.
+Câu 113: Cho câu lệnh: SELECT LPAD(salary, 10, *) FROM EMP WHERE EMP_ID = 1001;. Nếu lương là 17000, kết quả hiển thị là gì?
+A. Thông báo lỗi (An error statement)
+B. 17000.00
+C. 17000*****
+D. *****17000
+Đáp án đúng: A
+Giải thích: Ký tự đệm * trong hàm LPAD bắt buộc phải đặt trong dấu nháy đơn '*'. Việc viết * trần gây lỗi cú pháp.
+Câu 114: Muốn hiển thị lương năm nhân với commission_pct, nếu commission_pct bị NULL thì kết quả tính toán hiển thị số 0. Dùng câu lệnh nào?
+A. SELECT last_name, (salary * 12) * NVL(commission_pct, 0) FROM EMPLOYEES;
+B. SELECT last_name, (salary * 12) * commission_pct FROM EMPLOYEES;
+C. SELECT last_name, (salary * 12) * IFNULL(commission_pct,0) FROM EMPLOYEES;
+D. SELECT last_name, (salary * 12) * NVL2(commission_pct, 0) FROM EMPLOYEES;
+Đáp án đúng: A
+Giải thích: NVL(commission_pct, 0) trả về 0 khi hoa hồng bị NULL, giúp kết quả phép nhân bằng 0.
+Câu 115: Muốn hiển thị ngày hệ thống theo định dạng "Monday, 01 June, 2001". Dùng câu lệnh SELECT nào?
+A. SELECT TO_CHAR(SYSDATE, 'FMDay, DD Month, YYYY') FROM dual;
+B. SELECT TO_DATE(SYSDATE, 'FMDAY, DD Month, YYYY') FROM dual;
+C. SELECT TO_CHAR(SYSDATE, 'FMDD, DY Month, 'YYY') FROM dual;
+D. SELECT TO_CHAR(SYSDATE, 'FMDY, DDD Month, YYYY') FROM dual;
+Đáp án đúng: A
+Giải thích: TO_CHAR chuyển đổi định dạng ngày: FMDay lấy tên thứ, DD lấy ngày 2 chữ số, Month lấy tên tháng, YYYY lấy năm 4 chữ số.
+Câu 116: Giá trị hiển thị của câu lệnh: SELECT ROUND(TRUNC(MOD(1600, 10), -1), 2) FROM dual; là gì?
+A. 0
+B. 1
+C. 0.00
+D. Thông báo lỗi
+Đáp án đúng: A
+Giải thích: MOD(1600, 10) = 0; TRUNC(0, -1) = 0; ROUND(0, 2) = 0.
+Câu 117: Câu lệnh SELECT nào KHÔNG hiển thị số 2000 dưới định dạng '$2,000.00'?
+A. SELECT TO_CHAR (2000, '$2,000.00') FROM dual;
+B. SELECT TO_CHAR (2000, '$0,000.00') FROM dual;
+C. SELECT TO_CHAR (2000, '$9,999.00') FROM dual;
+D. SELECT TO_CHAR (2000, '$9,999.99') FROM dual;
+Đáp án đúng: A
+Giải thích: Trong mẫu định dạng định dạng số (format model) của Oracle, phải dùng các chữ số 9 hoặc 0, không được dùng chữ số 2.
+Câu 118: Phát biểu nào sau đây KHÔNG đúng về các hàm trong SQL?
+A. NVL2 trả về biểu thức không null đầu tiên trong danh sách
+B. DECODE chuyển đổi một biểu thức sau khi so sánh nó với từng giá trị tìm kiếm
+C. TRIM cắt bỏ các ký tự đầu hoặc cuối của một chuỗi ký tự
+D. NULLIF so sánh hai biểu thức và trả về null nếu chúng bằng nhau
+Đáp án đúng: A
+Giải thích: Hàm trả về biểu thức không null đầu tiên trong danh sách là COALESCE. NVL2(a, b, c) kiểm tra nếu a không null thì trả về b, ngược lại trả về c.
+Câu 119: Hàm nào sau đây là hàm xử lý chuỗi ký tự?
+A. TRIM
+B. TRUNC
+C. TO_DATE
+D. MOD
+Đáp án đúng: A
+Giải thích: TRIM dùng để loại bỏ khoảng trắng/ký tự ở hai đầu chuỗi.
+Câu 120: Bạn có thể thực hiện tác vụ nào bằng cách sử dụng hàm TO_CHAR?
+A. Chuyển đổi chuỗi '10' thành chuỗi '10' (hoặc định dạng biểu diễn chuỗi)
+B. Chuyển số 10 thành chữ 'TEN'
+C. Chuyển chuỗi '10' thành số 10
+D. Chuyển chuỗi 'TEN' thành số 10
+Đáp án đúng: A
+Giải thích: TO_CHAR chuyển đổi các kiểu dữ liệu khác sang định dạng chuỗi ký tự.
+MODULE 7: Hàm nhóm (Group Functions) (Câu 121 – 140)
+Câu 121: Phát biểu nào sau đây là ĐÚNG về mệnh đề WHERE và HAVING?
+A. Mệnh đề HAVING chỉ có thể dùng để hạn chế các nhóm (restrict groups)
+B. Mệnh đề WHERE chỉ dùng để hạn chế các nhóm
+C. Mệnh đề WHERE có thể dùng để hạn chế cả dòng lẫn nhóm
+D. Mệnh đề HAVING có thể dùng để hạn chế cả các dòng và các nhóm
+Đáp án đúng: D
+Giải thích: Mệnh đề HAVING có thể lọc các tập dữ liệu gom nhóm cũng như lọc điều kiện trên dòng dữ liệu (dù lọc dòng bằng WHERE sẽ tối ưu hơn).
+Câu 122: Câu lệnh nào trả về số lượng các phòng ban KHÁC NHAU có nhân viên mang họ 'Smith'?
+A. SELECT DISTINCT(COUNT(dept_id)) FROM employees WHERE last_name='Smith';
+B. SELECT COUNT(*) FROM employees WHERE last_name='Smith';
+C. SELECT COUNT(DISTINCT dept_id) FROM employees WHERE last_name='Smith';
+D. SELECT COUNT (dept_id) FROM employees WHERE last_name='Smith';
+Đáp án đúng: C
+Giải thích: COUNT(DISTINCT dept_id) đếm số giá trị mã phòng ban duy nhất khác NULL.
+Câu 123: Điều nào sau đây là ĐÚNG khi sử dụng các hàm nhóm trên các cột có chứa giá trị NULL?
+A. Hàm nhóm trên cột ngày tháng bao gồm cả giá trị NULL
+B. Các hàm nhóm trên cột tự động bỏ qua (ignore) các giá trị NULL
+C. Hàm nhóm không thể dùng chính xác trên cột chứa NULL
+D. Hàm nhóm trên cột kiểu số bao gồm cả giá trị NULL
+Đáp án đúng: B
+Giải thích: Tất cả các hàm nhóm (ngoại trừ COUNT(*)) đều tự động bỏ qua các giá trị NULL khi tính toán.
+Câu 124: Câu lệnh nào tìm điểm GPA cao nhất theo từng học kỳ (semester_end)?
+A. SELECT MAX(gpa) FROM student_grades WHERE gpa IS NOT NULL GROUP BY semester_end;
+B. SELECT (gpa) FROM student_grades GROUP BY semester_end WHERE gpa IS NOT NULL
+C. SELECT MAX(gpa) FROM student_grades WHERE gpa IS NOT NULL
+D. SELECT MAX(gpa) GROUP BY semester_end WHERE gpa IS NOT NULL FROM student_grades
+Đáp án đúng: A
+Giải thích: Để tìm giá trị lớn nhất theo từng nhóm học kỳ, dùng MAX(gpa) kết hợp GROUP BY semester_end.
+Câu 125: Kiểu dữ liệu nào tương thích khi áp dụng các hàm nhóm như MIN, MAX?
+A. Kiểu số (Numeric)
+B. Kiểu ngày (Date)
+C. Tất cả các kiểu dữ liệu trên
+D. Kiểu ký tự (Character)
+Đáp án đúng: C
+Giải thích: Các hàm MIN và MAX có thể áp dụng cho mọi kiểu dữ liệu cơ bản (số, chuỗi ký tự, ngày tháng).
+Câu 126: Cú pháp nào sau đây KHÔNG phải là một biến thể hợp lệ của hàm COUNT?
+A. COUNT(*)
+B. COUNT(expr1, expr2)
+C. COUNT(DISTINCT expr)
+D. COUNT(expr)
+Đáp án đúng: B
+Giải thích: Hàm COUNT chỉ nhận duy nhất 1 đối số biểu thức (hoặc *).
+Câu 127: Câu lệnh nào tính tỷ lệ hoa hồng trung bình (commission_pct), coi các giá trị NULL tương đương như số 0?
+A. SELECT AVG(NVL(commission_pct, 0)) FROM employees
+B. SELECT NULLIF(AVG(commission_pct), 0) FROM employees
+C. SELECT AVG(NULLIF(commission_pct, 0)) FROM employees
+D. SELECT NVL(AVG(commission_pct), 0) FROM employees
+Đáp án đúng: A
+Giải thích: Bọc NVL(commission_pct, 0) bên trong hàm AVG đảm bảo các bản ghi NULL được tính vào mẫu số của phép tính trung bình.
+Câu 128: Câu lệnh nào sau đây sẽ BÁO LỖI khi thực thi?
+A. SELECT AVG(salary) FROM employees GROUP BY department_id
+B. SELECT department_id, AVG(salary) FROM employees GROUP BY department_id
+C. SELECT job_id, AVG(salary) FROM employees GROUP BY department_id
+D. SELECT AVG(salary), job_id FROM employees GROUP BY department_id, job_id
+Đáp án đúng: C
+Giải thích: Cột job_id xuất hiện ở danh sách SELECT nhưng không có mặt trong mệnh đề GROUP BY gây ra lỗi ORA-00979.
+Câu 129: Phát biểu nào sau đây là KHÔNG đúng?
+A. Bạn không thể dùng mệnh đề WHERE để hạn chế các nhóm
+B. Bạn có thể sử dụng các hàm nhóm trong mệnh đề WHERE
+C. Bạn không thể sử dụng các hàm nhóm trong mệnh đề WHERE
+D. Bạn sử dụng mệnh đề HAVING để hạn chế các nhóm
+Đáp án đúng: B
+Giải thích: Bắt buộc phải dùng mệnh đề HAVING để lọc điều kiện dựa trên hàm nhóm; không được đặt hàm nhóm ở mệnh đề WHERE.
+Câu 130: Câu lệnh nào hiển thị số lượng các giá trị phòng ban KHÁC NHAU trong bảng EMPLOYEES?
+A. SELECT COUNT(department_id) FROM employees
+B. SELECT DISTINCT COUNT(department_id) FROM employees
+C. SELECT COUNT(DISTINCT department_id) FROM employees
+D. SELECT DISTINCT department_id FROM employees;
+Đáp án đúng: C
+Giải thích: COUNT(DISTINCT department_id) đếm số lượng các mã phòng ban không trùng lặp và không null.
+Câu 131: Kết quả của câu lệnh bên dưới là gì?
+SELECT department_id, AVG(salary) FROM employees WHERE AVG(salary) > 8000 GROUP BY department_id;
+A. Hiển thị danh sách mã phòng ban và lương trung bình > 8000
+B. Hiển thị danh sách tất cả phòng ban và lương trung bình
+C. Hiển thị danh sách phòng ban thỏa điều kiện
+D. Câu lệnh sẽ trả về lỗi (return an error)
+Đáp án đúng: D
+Giải thích: Mệnh đề WHERE chứa hàm nhóm AVG(salary) > 8000 bị sai cú pháp (phải chuyển thành HAVING AVG(salary) > 8000).
+Câu 132: Hàm tập hợp nào sau đây là HỢP LỆ khi áp dụng trên cột kiểu ngày START_DATE?
+A. MIN(start_date)
+B. AVG(start_date)
+C. MAXIMUM(start_date)
+D. SUM(start_date)
+Đáp án đúng: A
+Giải thích: MIN (lấy ngày sớm nhất) và MAX hợp lệ với kiểu ngày; các hàm AVG, SUM chỉ áp dụng cho dữ liệu kiểu số.
+Câu 133: Điều nào sau đây là ĐÚNG về câu lệnh: SELECT MAX(AVG(salary)) FROM employees GROUP BY department_id;?
+A. Báo lỗi vì không được lồng hàm nhóm
+B. Trả về lương trung bình lớn nhất theo từng phòng ban
+C. Báo lỗi vì Salary không có trong GROUP BY
+D. Hiển thị giá trị lớn nhất trong số các mức lương trung bình của các phòng ban
+Đáp án đúng: D
+Giải thích: Khi lồng 2 hàm nhóm (MAX(AVG(...))), kết quả sẽ thu về duy nhất 1 giá trị cực đại của các giá trị trung bình gom nhóm.
+Câu 134: Xét câu lệnh: SELECT subj1+subj2 total_marks, std_id FROM marks WHERE subj1 > AVG(subj1) AND subj2 > AVG(subj2) ORDER BY total_marks;. Kết quả là gì?
+A. Báo lỗi tại mệnh đề WHERE (returns an error at the WHERE clause)
+B. Chạy thành công
+C. Báo lỗi tại mệnh đề SELECT
+D. Báo lỗi tại mệnh đề ORDER BY
+Đáp án đúng: A
+Giải thích: Không được sử dụng các hàm nhóm như AVG(subj1) trực tiếp trong mệnh đề WHERE.
+Câu 135: Phát biểu nào sau đây là ĐÚNG về các hàm tập hợp (Aggregate functions)?
+A. Có thể kết hợp cột đơn dòng với hàm tập hợp trong câu SELECT bằng cách nhóm (GROUP BY) theo cột đơn dòng đó
+B. Chỉ được dùng hàm tập hợp ở SELECT và WHERE
+C. Chỉ dùng được hàm tập hợp khi coi toàn bộ bảng là một nhóm duy nhất
+D. Dùng được hàm tập hợp ở bất kỳ mệnh đề nào
+Đáp án đúng: A
+Giải thích: Quy tắc chuẩn: Mọi cột không chứa hàm tập hợp có mặt ở mệnh đề SELECT bắt buộc phải được khai báo trong mệnh đề GROUP BY.
+Câu 136: Mệnh đề nào dùng để loại trừ/lọc các kết quả của nhóm?
+A. HAVING
+B. RESTRICT
+C. WHERE
+D. GROUP BY
+Đáp án đúng: A
+Giải thích: Mệnh đề HAVING dùng để thiết lập điều kiện lọc dữ liệu sau khi đã được gom nhóm.
+Câu 137: Trong câu lệnh SELECT có chứa mệnh đề WHERE, mệnh đề GROUP BY phải được đặt ở vị trí nào?
+A. Đứng trước mệnh đề WHERE
+B. Đứng sau mệnh đề ORDER BY
+C. Đứng ngay sau mệnh đề SELECT
+D. Đứng sau mệnh đề WHERE
+Đáp án đúng: D
+Giải thích: Thứ tự cú pháp chuẩn của các mệnh đề: SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY.
+Câu 138: Cần lập báo cáo số lượng các loại sự kiện (event_type) KHÁC NHAU tại mỗi địa điểm (location_id). Câu lệnh SELECT nào đúng?
+A. SELECT COUNT(*), DISTINCT(location_id) FROM event;
+B. SELECT location_id, COUNT(DISTINCT event_type) FROM event GROUP BY location_id;
+C. SELECT DISTINCT (event_type) FROM event GROUP BY location_id;
+D. SELECT UNIQUE(location_id), COUNT(event_type) FROM event GROUP BY location_id;
+Đáp án đúng: B
+Giải thích: Gom nhóm theo location_id và đếm các loại sự kiện duy nhất bằng COUNT(DISTINCT event_type).
+Câu 139: Phát biểu nào về thứ tự đánh giá các mệnh đề trong câu lệnh SELECT của Oracle là ĐÚNG?
+A. Đánh giá ORDER BY trước WHERE
+B. Oracle Server sẽ đánh giá mệnh đề WHERE trước mệnh đề GROUP BY
+C. Đánh giá ORDER BY trước HAVING
+D. Đánh giá HAVING trước WHERE
+Đáp án đúng: B
+Giải thích: Thứ tự xử lý logic của Oracle: FROM -> WHERE (lọc dòng) -> GROUP BY (gom nhóm) -> HAVING (lọc nhóm) -> SELECT -> ORDER BY.
+Câu 140: Bạn cần tính TỔNG tiền lương của tất cả nhân viên trong phòng kế toán. Sử dụng hàm nhóm nào?
+A. COUNT
+B. MAX
+C. MIN
+D. SUM
+Đáp án đúng: D
+Giải thích: Hàm SUM(column) dùng để cộng tổng tất cả các giá trị số trong tập dữ liệu.
+MODULE 8: Phép nối trong SQL (SQL Joins) (Câu 141 – 160)
+Câu 141: Trong trường hợp nào bạn sẽ sử dụng Phép nối ngoài toàn phần (FULL OUTER JOIN)?
+A. Bạn muốn lấy tất cả dữ liệu không khớp từ một bảng
+B. Bạn muốn lấy tất cả dữ liệu KHÔNG KHỚP từ CẢ HAIBẢNG (all unmatched data from both tables)
+C. Cả hai bảng đều chứa giá trị NULL
+D. Bạn muốn lấy tất cả dữ liệu khớp từ cả hai bảng
+Đáp án đúng: B
+Giải thích: FULL OUTER JOIN trả về toàn bộ các dòng khớp nhau, cộng thêm tất cả các dòng không khớp từ cả bảng bên trái và bảng bên phải.
+Câu 142: Kết quả của câu truy vấn: SELECT * FROM employees, departments; là gì?
+A. Hiển thị các dòng từ employees rồi đến departments
+B. Tự động nối theo department_id
+C. Tạo ra một Tích Cartesian (Cartesian product) do không chỉ định điều kiện nối
+D. Trả về lỗi
+Đáp án đúng: C
+Giải thích: Liệt kê nhiều bảng ở mệnh đề FROM mà không có điều kiện nối trong WHERE sẽ ghép từng dòng của bảng 1 với mọi dòng của bảng 2 (Tích Descartes =  dòng).
+Câu 143: Câu truy vấn nào sau đây cho kết quả TƯƠNG ĐƯƠNG với: SELECT last_name, department_name FROM employees CROSS JOIN departments;?
+A. SELECT ... WHERE e.depatment_id (+) = d.department_id (+);
+B. SELECT ... JOIN departments USING (department_id)
+C. SELECT ... WHERE e.depatment_id = d.department_id;
+D. SELECT last_name, department_name FROM employees e, departments d;
+Đáp án đúng: D
+Giải thích: Cú pháp CROSS JOIN theo chuẩn ANSI chính là phép lấy Tích Cartesian (không có điều kiện nối), tương đương với việc viết tên hai bảng phân cách bởi dấu phẩy ở chuẩn cũ.
+Câu 144: Ký hiệu nào sau đây biểu diễn Phép nối ngoài (Outer Join) trong chuẩn cũ của Oracle?
+A. [+]
+B. (+)
+C. {+}
+D. +
+Đáp án đúng: B
+Giải thích: Đặt (+) bên cạnh cột của bảng thiếu dữ liệu để chỉ định phép nối ngoài trong cú pháp độc quyền của Oracle.
+Câu 145: Kết quả của truy vấn: SELECT e.last_name, e.department_id, d.department_name FROM employees e, departments d WHERE e.department_id(+) = d.department_id; là gì?
+A. Hiển thị nhân viên bất kể có phòng ban hay không
+B. Hiển thị nhân viên tất cả các phòng ban
+C. Hiển thị nhân viên và tên tất cả phòng ban
+D. Hiển thị họ nhân viên, mã phòng ban, tên phòng ban của tất cả nhân viên KHỚP và BỔ SUNG CẢ các phòng ban KHÔNG CÓ nhân viên nào
+Đáp án đúng: D
+Giải thích: Đặt (+) bên phía e.department_id tương đương với RIGHT OUTER JOIN, lấy toàn bộ phòng ban từ bảng departments kể cả phòng ban rỗng.
+Câu 146: Loại phép nối nào KHÔNG hỗ trợ trong các phiên bản Oracle 8i trở về trước?
+A. Full Outer Join
+B. Self Join
+C. Left Outer Join
+D. Right Outer Join
+Đáp án đúng: A
+Giải thích: Trước Oracle 9i (chưa hỗ trợ chuẩn SQL:1999), Oracle không hỗ trợ cú pháp FULL OUTER JOIN trực tiếp (phải dùng UNION giữa Left Join và Right Join).
+Câu 147: Phát biểu nào về việc sử dụng Biệt danh bảng (Table Aliases) và Tiền tố trong câu truy vấn Join là KHÔNG đúng?
+A. Rút gọn câu lệnh nhờ biệt danh bảng
+B. Tiền tố giúp xác định rõ ràng các cột trùng tên
+C. Tăng hiệu năng nhờ dùng tiền tố bảng
+D. BẮT BUỘC phải dùng tiền tố bảng khi nối từ 3 bảng trở lên
+Đáp án đúng: D
+Giải thích: Việc dùng tiền tố bảng không phụ thuộc vào số lượng bảng nối, mà chỉ bắt buộc khi cần giải quyết tranh chấp cột bị trùng tên giữa các bảng.
+Câu 148: Câu lệnh nào thể hiện cách viết ĐÚNG của phép Phép nối tự nhiên (NATURAL JOIN)?
+A. SELECT ... FROM departments d NATURAL JOIN locations l using (l.location_id);
+B. SELECT ... FROM departments NATURAL JOIN locations on (location_id);
+C. SELECT department_id, department_name, location_id, city FROM departments NATURAL JOIN locations;
+D. SELECT ... WHERE d.location_id = l.location_id
+Đáp án đúng: C
+Giải thích: NATURAL JOIN tự động tìm tất cả các cột trùng tên giữa 2 bảng để nối; KHÔNG ĐƯỢC dùng kèm mệnh đề USING hoặc ON.
+Câu 149: Phát biểu nào sau đây KHÔNG đúng về các phép nối (Joins)?
+A. Mệnh đề ON dùng để chỉ định điều kiện nối tùy ý
+B. Có thể sử dụng kết hợp NATURAL JOIN và mệnh đề USING trong cùng câu lệnh
+C. Mệnh đề USING dùng để chỉ định 1 cột nối khi có nhiều cột trùng tên
+D. Lỗi trả về nếu các cột trùng tên có kiểu dữ liệu khác nhau trong Natural Join
+Đáp án đúng: B
+Giải thích: NATURAL JOIN và mệnh đề USING loại trừ lẫn nhau, không thể xuất hiện cùng lúc.
+Câu 150: Câu lệnh SQL nào hiển thị tên, tên phòng ban và thành phố của tất cả nhân viên có lương > 10000?
+A. SELECT emp_name, department_name, city FROM employees e, departments d, locations l JOIN ON (e.department_id = d.department_id) AND (d.location_id = l.location_id) AND salary > 10000;
+B. SELECT emp_name, department_name, city FROM employees e, departments d, locations l WHERE salary > 10000;
+C. SELECT ... JOIN departments d USING (department_id) JOIN locations l USING (location_id)...
+D. SELECT ... NATURAL JOIN ...
+Đáp án đúng: A
+Giải thích: Cú pháp nối các bảng kết hợp mệnh đề JOIN ON và lọc điều kiện lương.
+Câu 151: Muốn lấy danh sách tất cả nhân viên, bất kể họ có phòng ban khớp trong bảng departments hay không. Dùng câu truy vấn nào?
+A. SELECT last_name, department_name FROM employees e LEFT OUTER JOIN departments d ON (e.department_id = d.department_id);
+B. SELECT last_name, department_name FROM employees , departments(+);
+C. SELECT last_name, department_name FROM employees JOIN departments (+);
+D. SELECT ... RIGHT OUTER JOIN ...
+Đáp án đúng: A
+Giải thích: LEFT OUTER JOIN đảm bảo giữ lại toàn bộ các bản ghi của bảng bên trái (employees), kể cả khi cột nối bị NULL hoặc không tìm thấy phòng ban.
+Câu 152: Điều nào sau đây KHÔNG đúng về việc sử dụng Phép nối ngoài (Outer Joins)?
+A. Dùng (+) sau tên cột của bảng thiếu dòng để nối
+B. Dùng outer join để chỉ xem các dòng không thỏa điều kiện nối
+C. Không thể liên kết điều kiện trong outer join bằng toán tử OR
+D. KHÔNG THỂ thực hiện Phép nối ngoài khi nối nhiều hơn 2 bảng
+Đáp án đúng: D
+Giải thích: Bạn hoàn toàn có thể nối ngoài liên tiếp trên nhiều bảng (ví dụ: A LEFT JOIN B ON ... LEFT JOIN C ON ...).
+Câu 153: Phép nối nào sau đây còn được gọi là Phép nối trong (Inner Join) hoặc Phép nối bằng?
+A. Self Join
+B. Outer Join
+C. Non-Equi Join
+D. Equi Join
+Đáp án đúng: D
+Giải thích: Equi Join (Phép nối bằng - dựa trên dấu =) là dạng phổ biến nhất của Inner Join.
+Câu 154: Điều nào sau đây là ĐÚNG về việc nối các bảng bằng phép nối bằng (Equijoin)?
+A. Chỉ định điều kiện equijoin ở SELECT hoặc FROM
+B. Để nối  bảng trong câu lệnh SQL, cần chỉ định TỐI THIỂU  điều kiện nối
+C. Chỉ nối được tối đa 2 cột qua equijoin
+D. Chỉ nối được tối đa 2 bảng qua equijoin
+Đáp án đúng: B
+Giải thích: Quy tắc vàng trong SQL: Nối  bảng cần ít nhất  điều kiện nối để tránh hiện tượng Tích Cartesian.
+Câu 155: Cho các bảng EMPLOYEES, DEPARTMENTS, và TAX (chứa MIN_SALARY, MAX_SALARY, TAX_PERCENT). Trường hợp nào bạn sẽ sử dụng Phép nối không bằng (Non-equijoin)?
+A. Tìm số nhân viên phòng Administrative có lương < 4000
+B. Tìm mức phần trăm thuế (TAX_PERCENT) cho từng nhân viên dựa vào khoảng lương
+C. Liệt kê tên, job_id và tên người quản lý
+D. Tìm nhân viên không làm cùng với Smith
+Đáp án đúng: B
+Giải thích: Xác định thuế suất cần so sánh mức lương nằm trong khoảng SALARY BETWEEN MIN_SALARY AND MAX_SALARY (sử dụng toán tử so sánh khoảng, không dùng dấu =).
+Câu 156: Để thu được tập kết quả có ý nghĩa không bị tích Cartesian, số điều kiện tối thiểu cần xuất hiện ở mệnh đề WHERE khi nối 4 BẢNG là bao nhiêu?
+A. 2
+B. 4
+C. 3
+D. 8
+Đáp án đúng: C
+Giải thích: Áp dụng công thức : Với  bảng, cần tối thiểu  điều kiện nối.
+Câu 157: Trong trường hợp nào bạn sẽ sử dụng Phép nối ngoài (Outer Join)?
+A. Các bảng được nối có các cột NOT NULL
+B. Các bảng được nối chứa CẢ dữ liệu KHỚP và KHÔNG KHỚP (both matched and unmatched data)
+C. Các bảng chỉ chứa dữ liệu không khớp
+D. Các bảng chỉ chứa dữ liệu khớp
+Đáp án đúng: B
+Giải thích: Sử dụng Outer Join khi bạn muốn lấy tất cả dữ liệu thỏa mãn điều kiện nối đồng thời giữ lại các dòng không tìm thấy bản ghi tương ứng từ bảng kia.
+Câu 158: Tích Cartesian (Cartesian product) xảy ra khi nào?
+A. Tất cả các dòng của bảng thứ nhất được nối với tất cả các dòng của bảng thứ hai
+B. Bỏ sót điều kiện nối
+C. Điều kiện nối không hợp lệ
+D. Hai bảng được nối trên các cột có tên khác nhau
+Đáp án đúng: D (Đáp án hệ thống ghi nhận theo thiết lập gốc)
+Giải thích: Tích Descartes về mặt bản chất là khi ghép mọi dòng của bảng 1 với mọi dòng của bảng 2 do thiếu hoặc sai lệch điều kiện nối.
+Câu 159: Tên nào sau đây KHÔNG phải là một loại Phép nối hợp lệ trong SQL?
+A. External Join
+B. Outer Join
+C. Inner Join
+D. Natural join
+Đáp án đúng: A
+Giải thích: SQL chỉ có Inner Join, Outer Join, Natural Join, Cross Join... Không tồn tại khái niệm "External Join".
+Câu 160: Loại phép nối nào được sử dụng trong câu truy vấn: SELECT e.employee_id, e.last_name, d.department_id, d.location_id FROM employees e, departments d WHERE e.department_id = d.department_id;?
+A. Self Join
+B. Non-equi Join
+C. Equi join (Phép nối bằng)
+D. Left Outer join
+Đáp án đúng: C
+Giải thích: Phép nối sử dụng toán tử so sánh bằng = giữa hai cột e.department_id = d.department_id được gọi là Equi Join.
+MODULE 9: Truy vấn con (Sub Queries) (Câu 161 – 180)
+Câu 161: Xét câu lệnh: SELECT employee_id, name FROM employee WHERE employee_id NOT IN (SELECT employee_id FROM employee WHERE department_id = 30 AND job = 'CLERK');. Điều gì xảy ra nếu truy vấn con bên trong trả về một giá trị NULL?
+A. Báo lỗi cú pháp
+B. Chỉ các dòng có EMPLOYEE_ID bằng NULL được chọn
+C. Hiển thị tất cả bản ghi
+D. KHÔNG CÓ dòng nào được chọn từ bảng EMPLOYEE (No rows would be selected)
+Đáp án đúng: D
+Giải thích: Toán tử NOT IN kết hợp với tập kết quả có chứa NULL sẽ luôn đánh giá thành UNKNOWN/FALSE, dẫn đến kết quả không có bản ghi nào thỏa mãn.
+Câu 162: Mệnh đề nào sau đây KHÔNG THỂ chứa một truy vấn con (Subquery)?
+A. Trong mệnh đề FROM của câu lệnh SELECT
+B. Trong mệnh đề GROUP BY của câu lệnh SELECT
+C. Trong mệnh đề SET của câu lệnh UPDATE
+D. Trong mệnh đề WHERE của câu lệnh SELECT
+Đáp án đúng: B
+Giải thích: SQL không cho phép đặt subquery trực tiếp bên trong mệnh đề GROUP BY.
+Câu 163: Phát biểu nào mô tả đúng nhất về một Inline View?
+A. Là một truy vấn con nằm trong mệnh đề FROM của một truy vấn khác
+B. Truy vấn con có chứa mệnh đề ORDER BY
+C. Tên gọi khác của View chứa hàm nhóm
+D. Một đối tượng lược đồ CSDL
+Đáp án đúng: A
+Giải thích: Inline View là dạng truy vấn con đóng vai trò như một bảng tạm thời đặt ngay tại mệnh đề FROM.
+Câu 164: Phát biểu nào sau đây về các truy vấn con (Subqueries) là ĐÚNG?
+A. Một truy vấn con có thể trả về 0, 1 hoặc nhiều dòng
+B. Truy vấn con chỉ được phép trả về đúng 1 dòng
+C. Không thể lồng subquery quá 2 cấp
+D. Subquery chỉ dùng được trong lệnh SELECT
+Đáp án đúng: A
+Giải thích: Tùy thuộc vào câu lệnh và toán tử đi kèm, subquery có thể trả về 0 dòng, 1 dòng (Scalar) hoặc tập hợp nhiều dòng.
+Câu 165: Câu lệnh nào hiển thị các nhân viên có cùng job_id với nhân viên 'Haas' và có mức lương > 10000?
+A. SELECT last_name, job_id FROM employees WHERE job_id IN (SELECT job_id FROM employees WHERE last_name = 'Haas') AND salary > 10000;
+B. SELECT ... WHERE last_name = 'Haas' AND salary >10000
+C. SELECT ... WHERE job_id IN (SELECT ... WHERE Salary > 10000) AND last_name = 'Haas'
+D. SELECT ... WHERE job_id = (SELECT ... WHERE last_name = 'Haas' AND salary > 10000);
+Đáp án đúng: A
+Giải thích: Truy vấn con lấy job_id của Haas, truy vấn chính lọc theo job_id IN (...) và điều kiện salary > 10000.
+Câu 166: Thành phần nào được dùng để truy xuất dữ liệu từ một hoặc nhiều bảng khi giữa các bảng không có mối quan hệ trực tiếp?
+A. Sub query (Truy vấn con)
+B. Cả hai
+C. Joins
+D. Không phương án nào
+Đáp án đúng: A
+Giải thích: Khi không thể nối bảng bằng JOIN do thiếu cột khóa chung, Subquery được sử dụng để lấy giá trị điều kiện gián tiếp.
+Câu 167: Truy vấn con (Subquery) có thể được sử dụng để làm gì?
+A. Truy xuất dữ liệu dựa trên một điều kiện chưa biết trước (unknown condition)
+B. Tạo các nhóm dữ liệu
+C. Chuyển đổi dữ liệu sang định dạng khác
+D. Sắp xếp dữ liệu theo thứ tự cụ thể
+Đáp án đúng: A
+Giải thích: Truy vấn con đóng vai trò tính toán ra giá trị động trung gian để làm điều kiện lọc cho truy vấn chính.
+Câu 168: Cho dữ liệu bảng EMPLOYEES. Truy vấn con nào sau đây sẽ KHÔNG HOẠT ĐỘNG (bị lỗi)?
+A. SELECT distinct department_id FROM employees Where salary > ANY (SELECT AVG(salary) FROM employees GROUP BY department_id)
+B. SELECT last_name FROM employees Where salary > ANY (SELECT MAX(salary) FROM employees GROUP BY department_id)
+C. SELECT * FROM employees where salary > (SELECT MIN(salary) FROM employees GROUP BY department_id)
+D. SELECT department_id FROM employees WHERE SALARY > ALL (SELECT AVG(salary) FROM employees GROUP BY department_id)
+Đáp án đúng: C
+Giải thích: Truy vấn con (SELECT MIN(salary) ... GROUP BY department_id) trả về nhiều dòng, nhưng truy vấn ngoài lại dùng toán tử so sánh đơn dòng >.
+Câu 169: Cột giả LEVEL có tác dụng gì trong Oracle?
+A. Chỉ định nút bắt đầu của truy vấn phân cấp
+B. Hiển thị cấp độ (độ sâu) của dòng trong cấu trúc cây phân cấp
+C. Không phương án nào
+D. Căn bằng đầu ra truy vấn
+Đáp án đúng: B
+Giải thích: Cột giả LEVEL trả về giá trị số (1, 2, 3...) tương ứng với thứ tự tầng nút trong truy vấn phân cấp CONNECT BY.
+Câu 170: Truy vấn nào hiển thị thông tin nhân viên và người quản lý theo cấu trúc cây TỪ TRÊN XUỐNG (TOP-DOWN), bắt đầu từ nhân viên 'King'?
+A. SELECT employee_id, last_name, job_id, manager_id FROM employees START WITH last_name = 'King' CONNECT BY PRIOR employee_id = manager_id ;
+B. SELECT ... CONNECT BY PRIOR manager_id = employee_id;
+C. SELECT ... CONNECT BY PRIOR employee_id TOP_DOWN;
+D. SELECT ... CONNECT BY TOP_DOWN employee_id = manager_id ;
+Đáp án đúng: A
+Giải thích: Duyệt cây Top-Down từ sếp đến nhân viên cấp dưới dùng START WITH ... CONNECT BY PRIOR employee_id = manager_id.
+Câu 171: Kết quả của câu truy vấn bên dưới là gì?
+SELECT last_name, job_id, salary FROM employees WHERE job_id = (SELECT job_id FROM employees WHERE employee_id = 141) AND salary > (SELECT salary FROM employees WHERE employee_id = 143);
+A. Hiển thị nhân viên có job_id bằng nhân viên 141 hoặc 143...
+B. Hiển thị nhân viên có job_id bằng nhân viên 141 và 143...
+C. Hiển thị nhân viên thỏa điều kiện hoặc...
+D. Hiển thị các nhân viên có cùng job_id với nhân viên 141 VÀ có mức lương LỚN HƠN lương của nhân viên 143
+Đáp án đúng: D
+Giải thích: Mệnh đề WHERE kết hợp 2 truy vấn con đơn dòng bằng toán tử AND.
+Câu 172: Phát biểu nào sau đây về các truy vấn con là ĐÚNG?
+A. Subquery không thể tham chiếu đến bảng không có ở FROM ngoài
+B. Subquery bắt buộc phải nằm bên phải toán tử so sánh
+C. Các truy vấn con có thể trả về nhiều cột (multiple columns)
+D. Subquery không thể lồng quá 3 cấp
+Đáp án đúng: C
+Giải thích: Truy vấn con đa cột (Multiple-column subquery) cho phép chọn nhiều cột đồng thời, ví dụ: WHERE (col1, col2) IN (SELECT c1, c2 FROM...).
+Câu 173: Toán tử nào sau đây KHÔNG phải là toán tử so sánh đa dòng (Multiple-row comparison operator)?
+A. ANY
+B. IN
+C. EACH
+D. ALL
+Đáp án đúng: C
+Giải thích: Trong SQL chỉ có các toán tử so sánh tập hợp đa dòng gồm: IN, ANY (hoặc SOME), và ALL. "EACH" không phải toán tử SQL.
+Câu 174: Xét câu lệnh: SELECT product_id, product_name, price FROM product WHERE supplier_id IN (SELECT supplier_id FROM product WHERE price > 120 OR qty_in_stock > 100);. Giá trị nào sẽ được hiển thị?
+A. Các sản phẩm có giá > 120 hoặc tồn kho > 100
+B. Các sản phẩm có giá > 120 và tồn kho > 100
+C. PRODUCT_ID, PRODUCT_NAME, và PRICE của các sản phẩm được cung cấp bởi nhà cung cấp CÓ bán sản phẩm giá > $120.00 HOẶC có tồn kho > 100
+D. Sản phẩm giá > 120 hoặc tồn kho < 100
+Đáp án đúng: C
+Giải thích: Truy vấn con lọc các supplier_id thỏa điều kiện giá hoặc tồn kho, truy vấn ngoài lấy tất cả sản phẩm thuộc các nhà cung cấp đó.
+Câu 175: Truy vấn con (Subquery) có thể được sử dụng để làm gì?
+A. Sắp xếp dữ liệu theo thứ tự
+B. Tạo các nhóm dữ liệu
+C. Truy xuất dữ liệu dựa trên một điều kiện chưa biết trước (Retrieve data based on an unknown condition)
+D. Chuyển đổi dữ liệu
+Đáp án đúng: C
+Giải thích: Tương tự câu 167, Subquery giúp xác định động các giá trị điều kiện phục vụ truy vấn chính.
+Câu 176: Phát biểu nào sau đây về truy vấn con là KHÔNG đúng?
+A. Một truy vấn con đơn dòng chỉ có thể truy xuất duy nhất 1 cột và 1 dòng
+B. Truy vấn con đa dòng có thể trả về nhiều dòng và nhiều cột
+C. Có thể so sánh truy vấn con đa dòng bằng toán tử ">"
+D. Truy vấn con đơn dòng có thể lấy 1 dòng nhưng nhiều cột
+Đáp án đúng: A
+Giải thích: Truy vấn con đơn dòng (Single-row subquery) được định nghĩa là trả về duy nhất 1 dòng, nhưng dòng đó có thể chứa nhiều cột.
+Câu 177: Bạn định nghĩa một truy vấn con đa dòng ở mệnh đề WHERE với toán tử so sánh "=". Điều gì xảy ra khi chạy câu truy vấn chính?
+A. Truy vấn chính sẽ THẤT BẠI vì truy vấn con đa dòng không thể dùng với toán tử so sánh đơn dòng
+B. Chạy với giá trị cuối cùng
+C. Chạy với tất cả giá trị
+D. Chạy với giá trị đầu tiên
+Đáp án đúng: A
+Giải thích: Báo lỗi ORA-01427: single-row subquery returns more than one row do xung đột giữa toán tử đơn dòng = và tập kết quả nhiều dòng.
+Câu 178: Toán tử nào sau đây có thể sử dụng với một truy vấn con đa dòng (Multiple-row subquery)?
+A. LIKE
+B. =
+C. NOT IN
+D. BETWEEN
+Đáp án đúng: C
+Giải thích: NOT IN (cùng với IN, ANY, ALL) là toán tử chuyên dụng làm việc với tập kết quả đa dòng.
+Câu 179: Phát biểu nào sau đây về các truy vấn con là ĐÚNG?
+A. Truy vấn con đơn dòng chỉ lấy dữ liệu từ 1 bảng
+B. Truy vấn con đơn dòng không thể dùng toán tử LIKE
+C. Một câu lệnh SQL không thể hiển thị dữ liệu từ bảng B chỉ được tham chiếu trong truy vấn con của nó (mà không khai báo B ở mệnh đề FROM chính)
+D. Câu lệnh SQL có thể hiển thị cột từ bảng B nằm trong subquery mà không khai báo B ở FROM
+Đáp án đúng: C
+Giải thích: Mệnh đề SELECT của truy vấn ngoài chỉ có quyền truy cập và hiển thị các cột thuộc các bảng được khai báo tại mệnh đề FROM của truy vấn ngoài.
+Câu 180: Cho hai bảng EMPLOYEES và NEW_EMPLOYEES. Câu lệnh DELETE nào sau đây là HỢP LỆ?
+A. DELETE FROM employees WHERE employee_id IN (SELECT employee_id FROM new_employees WHERE name = 'Carrey');
+B. DELETE FROM employees WHERE employee_id = (SELECT employee_id FROM employees);
+C. DELETE * FROM employees WHERE...
+D. DELETE * FROM employees...
+Đáp án đúng: A
+Giải thích: Cú pháp xóa hợp lệ sử dụng Subquery để lọc các employee_id thỏa điều kiện từ bảng khác.
+MODULE 10: Truy vấn con nâng cao (Advanced Sub Queries) (Câu 181 – 200)
+Câu 181: Phát biểu nào sau đây về Truy vấn con là KHÔNG hợp lệ?
+A. Truy vấn con (truy vấn trong) trả về giá trị được sử dụng bởi câu lệnh cha
+B. Truy vấn con là câu lệnh SELECT được lồng bên trong một mệnh đề của câu lệnh SQL khác
+C. Lồng subquery tương đương thực hiện 2 truy vấn nối tiếp nhau
+D. Câu lệnh bên ngoài (Outer query) luôn được thực thi trước, sau đó mới đến truy vấn con bên trong
+Đáp án đúng: D
+Giải thích: Trong các subquery thông thường (không tương quan), truy vấn con bên trong (Inner query) sẽ thực thi trước để trả kết quả cho câu lệnh cha bên ngoài.
+Câu 182: Loại truy vấn con nào được sử dụng trong câu lệnh SQL bên dưới?
+SELECT employee_id, last_name, (CASE WHEN department_id = (SELECT department_id FROM departments WHERE location_id = 1800) THEN 'Canada' ELSE 'USA' END) location FROM employees;
+A. Pair-wise comparison sub-query
+B. Correlated sub query
+C. Inline sub query
+D. Scalar Sub query (Truy vấn con vô hướng)
+Đáp án đúng: D
+Giải thích: Truy vấn con đặt trong biểu thức CASE trả về đúng 1 ô giá trị duy nhất (1 dòng, 1 cột) được gọi là Scalar Subquery.
+Câu 183: Phát biểu nào sau đây KHÔNG đúng về Truy vấn con tương quan (Correlated sub Queries)?
+A. Được thực thi một lần cho mỗi dòng được xử lý bởi câu lệnh cha
+B. Câu lệnh cha có thể là SELECT, UPDATE, hoặc DELETE
+C. Truy vấn con tương quan CHỈ ĐƯỢC THỰC THI 1 LẦN duy nhất cho toàn bộ câu lệnh cha
+D. Thực hiện khi subquery tham chiếu đến một cột của bảng ở câu lệnh cha
+Đáp án đúng: C
+Giải thích: Khác với subquery độc lập, Correlated Subquery phải thực thi lặp đi lặp lại tương ứng với MỖI dòng mà câu lệnh cha duyệt qua.
+Câu 184: Loại truy vấn con nào được sử dụng trong câu lệnh SQL bên dưới?
+SELECT employee_id, last_name FROM employees e ORDER BY (SELECT department_name FROM departments d WHERE e.department_id = d.department_id);
+A. Pair-wise comparison sub-query
+B. Correlated sub query (Truy vấn con tương quan)
+C. Inline sub query
+D. Non-pair wise comparison query
+Đáp án đúng: B
+Giải thích: Truy vấn con nằm ở ORDER BY tham chiếu đến cột e.department_id của bảng employees e ở truy vấn ngoài, do đó đây là Correlated Subquery.
+Câu 185: Toán tử EXISTS trả về giá trị gì khi truy vấn con bên trong KHÔNG chọn ra bản ghi nào?
+A. 0
+B. FALSE
+C. TRUE
+D. NULL
+Đáp án đúng: B
+Giải thích: EXISTS kiểm tra sự tồn tại: Nếu subquery trả về từ 1 dòng trở lên -> TRUE; nếu trả về 0 dòng -> FALSE.
+Câu 186: Kết quả của câu truy vấn bên dưới là gì?
+SELECT employee_id, last_name, job_id, department_id FROM employees outer WHERE EXISTS (SELECT 'X' FROM employees WHERE manager_id = outer.employee_id);
+A. Hiển thị nhân viên có cấp dưới tên 'X'
+B. Hiển thị các nhân viên CÓ ÍT NHẤT MỘT NGƯỜI BÁO CÁO (cấp dưới) cho họ
+C. Hiển thị nhân viên có người quản lý
+D. Hiển thị nhân viên có mã 'X'
+Đáp án đúng: B
+Giải thích: Truy vấn kiểm tra nếu employee_id của nhân viên hiện tại xuất hiện ở vị trí manager_id của bất kỳ ai khác -> Nhân viên đó là Trưởng phòng/Manager.
+Câu 187: Câu truy vấn nào sau đây hiển thị tất cả các phòng ban KHÔNG CÓ nhân viên nào?
+A. SELECT department_id, department_name FROM departments d WHERE NOT EXISTS (SELECT 'X' FROM employees WHERE department_id = d.department_id);
+B. SELECT ... WHERE EXISTS (...)
+C. SELECT ... WHERE NOT EXISTS (SELECT 'X' FROM employees WHERE department_id = department_id);
+D. SELECT ... WHERE EXISTS (...)
+Đáp án đúng: A
+Giải thích: Mệnh đề NOT EXISTS kiểm tra nếu subquery tìm kiếm nhân viên thuộc phòng ban d.department_id trả về rỗng.
+Câu 188: Xét câu lệnh UPDATE bên dưới, đây là loại cập nhật nào?
+UPDATE employees e SET department_name = (SELECT department_name FROM departments d WHERE e.department_id = d.department_id);
+A. Inline Update
+B. Correlated Update (Cập nhật tương quan)
+C. Direct Update
+D. Indirect Update
+Đáp án đúng: B
+Giải thích: Phép UPDATE sử dụng truy vấn con có liên kết điều kiện (e.department_id = d.department_id) với bảng đang được cập nhật.
+Câu 189: Câu lệnh nào sử dụng truy vấn con tương quan để XÓA các dòng khỏi bảng EMPLOYEES mà các dòng đó cũng có mặt trong bảng EMP_HISTORY?
+A. DELETE FROM employees E WHERE employee_id IN (...);
+B. DELETE FROM employees E WHERE employee_id = (SELECT employee_id FROM emp_history WHERE employee_id = E.employee_id);
+C. DELETE FROM employees E WHERE employee_id IN (SELECT employee_id FROM emp_history H)
+D. DELETE FROM employees E , emp_history H WHERE E.employee_id = H. employee_id;
+Đáp án đúng: B
+Giải thích: Lệnh DELETE sử dụng điều kiện so sánh tương quan WHERE employee_id = E.employee_id.
+Câu 190: Phát biểu nào sau đây KHÔNG đúng về việc sử dụng mệnh đề WITH?
+A. Định nghĩa khối truy vấn trước khi dùng
+B. Được gọi là subquery_factoring_clause
+C. Tái sử dụng cùng một khối truy vấn nhiều lần trong câu lệnh phức tạp
+D. Mệnh đề WITH khác Inline View ở chỗ nó có thể TẠO CÁC VIEW VĨNH VIỄN và tái sử dụng lâu dài
+Đáp án đúng: D
+Giải thích: Mệnh đề WITH chỉ tạo ra các tập kết quả tạm thời trong phạm vi thực thi của duy nhất câu lệnh SQL đó, không tạo đối tượng View vĩnh viễn trong CSDL.
+Câu 191: Khi nào việc sử dụng mệnh đề WITH mang lại hiệu quả cao nhất?
+A. Khi truy vấn có nhiều bảng cần nối
+B. Khi dùng Inline Subquery ở FROM
+C. Khi câu truy vấn có NHIỀU THAM CHIẾU đến CÙNG MỘT KHỐI TRUY VẤN và có chứa các phép nối cùng hàm tập hợp
+D. Dùng thay cho Correlated subquery
+Đáp án đúng: C
+Giải thích: WITH giúp tính toán khối truy vấn phức tạp 1 lần, lưu vào bộ đệm tạm thời để các nhánh truy vấn sau truy cập lại mà không phải tính lại.
+Câu 192: Trường hợp nào sau đây là một cách sử dụng HỢP LỆ của truy vấn con (Sub-query)?
+A. Định nghĩa tập các dòng để chèn trong INSERT hoặc CREATE TABLE
+B. Cung cấp giá trị điều kiện cho các mệnh đề WHERE, HAVING, START WITH
+C. Tất cả các trường hợp trên
+D. Gán giá trị cập nhật cho các dòng trong câu lệnh UPDATE
+Đáp án đúng: C
+Giải thích: Truy vấn con linh hoạt xuất hiện trong các câu lệnh DML (INSERT, UPDATE), DDL (CREATE TABLE AS), và các mệnh đề lọc dữ liệu.
+Câu 193: Điều nào sau đây KHÔNG phải là lợi ích của việc sử dụng mệnh đề WITH?
+A. Tự động sắp xếp kết quả đầu ra của câu truy vấn (Automatically sorts the output)
+B. Chỉ đánh giá khối truy vấn 1 lần dù xuất hiện nhiều lần
+C. Tăng hiệu năng thực thi
+D. Giúp câu truy vấn dễ đọc hơn
+Đáp án đúng: A
+Giải thích: Mệnh đề WITH không tự động thực hiện việc sắp xếp dữ liệu trả về ngoại trừ khi bạn chủ động thêm mệnh đề ORDER BY.
+Câu 194: Xác định toán tử KHÁC BIỆT nhất so với các toán tử còn lại khi dùng kèm với Truy vấn con:
+A. =
+B. ANY
+C. ALL
+D. IN
+Đáp án đúng: A
+Giải thích: = là toán tử so sánh ĐƠN DÒNG (Single-row operator), trong khi ANY, ALL, IN là các toán tử so sánh ĐA DÒNG (Multiple-row operators).
+Câu 195: Câu truy vấn nào hiển thị thông tin tất cả nhân viên có mức lương THẤP HƠN mức lương trung bình của toàn công ty?
+A. SELECT last_name, job_id, salary FROM employees WHERE salary < (SELECT AVG(salary) FROM employees GROUP BY Department_id);
+B. SELECT ... HAVING salary < ...
+C. SELECT ... WHERE salary ANY ...
+D. SELECT last_name, job_id, salary FROM employees WHERE salary < (SELECT AVG(salary) FROM employees);
+Đáp án đúng: D
+Giải thích: Subquery (SELECT AVG(salary) FROM employees) tính lương trung bình toàn công ty (không GROUP BY), truy vấn ngoài so sánh salary < (...).
+Câu 196: Truy vấn con đa cột (Multicolumn sub query) là gì?
+A. Không có subquery đa cột, chỉ có đa dòng
+B. Một truy vấn con chọn ra từ HAI CỘT TRỞ LÊN được gọi là truy vấn con đa cột
+C. Subquery dùng toán tử đơn dòng
+D. Subquery dùng DECODE
+Đáp án đúng: B
+Giải thích: Multicolumn Subquery trả về nhiều hơn một cột trong danh sách SELECT để so sánh đồng thời với bộ nhiều cột ở câu lệnh cha.
+Câu 197: Kết quả của câu truy vấn con đa cột bên dưới là gì?
+SELECT employee_id, manager_id, department_id FROM employees WHERE (manager_id, department_id) IN (SELECT manager_id, department_id FROM employees WHERE employee_id IN (178, 174));
+A. Hiển thị nhân viên có CẢ người quản lý VÀ phòng ban trùng với người quản lý và phòng ban của nhân viên 178 HOẶC 174 (Pairwise matching)
+B. Khớp với cả 178 và 174
+C. So sánh rời rạc
+D. Trả về lỗi
+Đáp án đúng: A
+Giải thích: Đây là So sánh ghép cặp (Pairwise comparison): Cả cặp (manager_id, department_id) phải khớp đồng thời với cặp tương ứng của nhân viên 178 hoặc 174.
+Câu 198: Kết quả của câu truy vấn con đa cột bên dưới là gì?
+SELECT employee_id, manager_id, department_id FROM employees WHERE manager_id IN (SELECT manager_id FROM employees WHERE employee_id IN (174, 141)) AND department_id IN (SELECT department_id FROM employees WHERE employee_id IN (174, 141)) AND employee_id NOT IN (174, 141);
+A. Khớp đồng thời theo cặp
+B. Báo lỗi
+C. Khớp đồng thời cả 2
+D. Hiển thị nhân viên có manager_id thuộc tập manager của (174, 141) VÀ department_id thuộc tập department của (174, 141) (Non-pairwise matching)
+Đáp án đúng: D
+Giải thích: Đây là So sánh không ghép cặp (Non-pairwise comparison): manager_id và department_id được xét độc lập thông qua 2 truy vấn con riêng biệt.
+Câu 199: Điều nào sau đây KHÔNG đúng về Inline Sub Queries?
+A. Định nghĩa nguồn dữ liệu cho riêng câu lệnh SELECT đó
+B. Được gọi là một Inline View
+C. Bảng ảo (Inline view) được tạo ra có thể TÁI SỬ DỤNG LẠI sau đó bởi các câu truy vấn khác
+D. Sử dụng ở mệnh đề FROM tương tự như cách dùng bảng/view
+Đáp án đúng: C
+Giải thích: Inline View chỉ tồn tại tạm thời trong bộ nhớ trong quá trình thực thi câu truy vấn chứa nó, không thể tái sử dụng cho các câu truy vấn khác.
+Câu 200: Điều nào sau đây KHÔNG đúng về Truy vấn con vô hướng (Scalar sub queries)?
+A. Truy vấn con nhiều cột viết để so sánh 2 hay nhiều cột dùng WHERE phức hợp KHÔNG ĐƯỢC COI là scalar sub query
+B. Giá trị của biểu thức scalar subquery là giá trị của cột chọn ra
+C. Nếu subquery trả về 0 dòng, giá trị biểu thức là NULL
+D. Truy vấn con trả về chính xác 1 giá trị cột từ 1 dòng gọi là scalar subquery
+Đáp án đúng: A
+Giải thích: Đáp án A bị sai về định nghĩa. Scalar Subquery được định nghĩa nghiêm ngặt là truy vấn con trả về đúng 1 dòng và 1 cột (1 giá trị ô duy nhất).
+MODULE 11: Chế độ xem (Views) (Câu 201 – 220)
+Câu 201: Trong kịch bản nào thì Phân tích TOP-N (TOP N analysis) là giải pháp tốt nhất?
+A. Xác định người có lương cao nhất
+B. Tìm manager quản lý nhiều nhân viên nhất
+C. Xếp hạng BA ĐẠI DIỆN BÁN HÀNG xuất sắc nhất có doanh số cao nhất
+D. Xác định nhân viên thâm niên nhất
+Đáp án đúng: C
+Giải thích: TOP-N Analysis dùng để lấy ra nhóm  bản ghi đầu bảng xếp hạng (ví dụ: Top 3 đại diện bán hàng xuất sắc).
+Câu 202: Xét cấu trúc View EMP_DEPT_VU. Câu lệnh SQL nào sau đây sẽ BÁO LỖI?
+A. SELECT * FROM emp_dept_vu;
+B. SELECT department_id, SUM(salary) FROM emp_dept_vu GROUP BY department_id;
+C. SELECT department_id, job_id, AVG(salary) FROM emp_dept_vu GROUP BY department_id, job_id;
+D. KHÔNG CÓ câu lệnh nào bị lỗi; tất cả đều hợp lệ
+Đáp án đúng: D
+Giải thích: View EMP_DEPT_VU chứa các cột dữ liệu thô, do đó người dùng có thể thực hiện truy vấn SELECT, gom nhóm GROUP BY và dùng hàm tập hợp bình thường.
+Câu 203: Câu lệnh SQL nào dùng để XÓA bỏ một View có tên EMP_DEPT_VU khỏi lược đồ của bạn?
+A. REMOVE emp_dept_vu;
+B. DELETE emp_dept_vu;
+C. DROP emp_dept_vu
+D. DROP VIEW emp_dept_vu;
+Đáp án đúng: D
+Giải thích: Lệnh DDL để xóa đối tượng View khỏi từ điển dữ liệu là DROP VIEW ;.
+Câu 204: Phân tích Top N (Top N analysis) yêu cầu thành phần nào?
+A. Chỉ cần một inline view
+B. Sử dụng cột giả ROWNUM (The use of ROWNUM pseudo column)
+C. Sử dụng ROWID
+D. Mệnh đề GROUP BY
+Đáp án đúng: B
+Giải thích: Phân tích Top-N yêu cầu sắp xếp dữ liệu ở Inline View trước, sau đó dùng điều kiện WHERE ROWNUM <= N ở truy vấn ngoài để lấy ra  bản ghi đầu.
+Câu 205: Điều nào sau đây là ĐÚNG về việc cập nhật dữ liệu thông qua một View?
+A. Ràng buộc trên view luôn ghi đè bảng cơ sở
+B. Hàm nhóm tự động được tính lại
+C. Bạn KHÔNG THỂ cập nhật dữ liệu qua một View có chứa các HÀM NHÓM (group functions)
+D. Chỉ dữ liệu trên view bị sửa, bảng cơ sở không đổi
+Đáp án đúng: C
+Giải thích: View phức tạp (Complex View) có chứa hàm tập hợp, GROUP BY, DISTINCT hoặc toán tử tập hợp là View CHỈ ĐỌC, không cho phép thực hiện DML.
+Câu 206: Tùy chọn FORCE có tác dụng gì khi tạo một View (CREATE FORCE VIEW...)?
+A. Tạo View BẤT KỂ các bảng cơ sở (base tables) đã TỒN TẠI HAY CHƯA
+B. Tạo view ở schema khác không cần quyền
+C. Tạo view dù bảng cha có constraint
+D. Tạo view có ràng buộc
+Đáp án đúng: A
+Giải thích: Tùy chọn FORCE ép buộc Oracle tạo View thành công ngay cả khi bảng cơ sở chưa được tạo hoặc người dùng chưa có quyền trên bảng đó.
+Câu 207: Phát biểu nào mô tả đúng nhất về một Inline View?
+A. Một đối tượng lược đồ
+B. Một truy vấn con nằm trong mệnh đề FROM của một truy vấn khác
+C. Truy vấn con chứa ORDER BY
+D. Tên gọi khác của View chứa hàm nhóm
+Đáp án đúng: B
+Giải thích: Inline View chính là câu lệnh SELECT đóng vai trò như bảng dữ liệu tạm thời đặt tại mệnh đề FROM.
+Câu 208: Phát biểu nào sau đây về View là KHÔNG đúng?
+A. View có thể tạo ở dạng chỉ đọc (read only)
+B. Bắt buộc bảng cơ sở PHẢI TỒN TẠI mới tạo được View
+C. View có thể tạo có chứa GROUP BY
+D. View có thể tạo dựa trên một View khác
+Đáp án đúng: B
+Giải thích: Nhờ có tùy chọn CREATE FORCE VIEW, bạn vẫn tạo được View kể cả khi bảng cơ sở chưa tồn tại.
+Câu 209: Xét câu lệnh: SELECT a.emp_name, a.sal, a.dept_id, b.maxsal FROM employees a, (SELECT dept_id, MAX(sal) maxsal FROM employees GROUP BY dept_id) b WHERE a.dept_id = b.dept_id AND a.sal < b.maxsal;. Kết quả là gì?
+A. Lỗi ở dòng 3
+B. Lỗi ở dòng 4
+C. Trả về tên, lương, mã phòng và lương cao nhất của phòng ban đối với tất cả nhân viên CÓ MỨC LƯƠNG THẤP HƠN mức lương cao nhất trong phòng ban của họ
+D. Lỗi ở dòng 1
+Đáp án đúng: C
+Giải thích: Inline View b tính mức lương max theo phòng ban, truy vấn ngoài lọc các nhân viên có lương a.sal < b.maxsal.
+Câu 210: Cần tạo View EMP_VU cho phép người dùng INSERT các dòng thông qua View. Câu lệnh nào cho phép thực hiện?
+A. CREATE VIEW ... SUM(sal) TOTALSAL ... GROUP BY (View chứa hàm nhóm - KHÔNG INSERT ĐƯỢC)
+B. CREATE VIEW ... WHERE mgr_id IN (102, 120);
+C. CREATE VIEW ... DISTINCT ... (View chứa DISTINCT - KHÔNG INSERT ĐƯỢC)
+D. CREATE VIEW emp_vu AS SELECT employee_id, emp_name, job_id, department_id FROM employees WHERE mgr_id IN (102, 120);
+Đáp án đúng: D
+Giải thích: View đơn giản (Simple View) trích xuất trực tiếp các cột dữ liệu thô từ 1 bảng, không có GROUP BY/DISTINCT sẽ hỗ trợ thao tác INSERT.
+Câu 211: Bạn cần xem lại cấu trúc định nghĩa (câu lệnh SELECT tạo View) của View EMP_DEPT_VU. Lấy định nghĩa này bằng cách nào?
+A. Truy vấn từ điển dữ liệu USER_VIEWS để tìm View EMP_DEPT_VU
+B. Dùng lệnh DESCRIBE VIEW
+C. Dùng lệnh DEFINE VIEW
+D. Truy vấn view USER_SOURCE
+Đáp án đúng: A
+Giải thích: Cột TEXT trong Data Dictionary View USER_VIEWS chứa toàn bộ câu lệnh SQL được dùng để định nghĩa View đó.
+Câu 212: Điều kiện cần thiết để câu truy vấn của bạn trên một View có sẵn có thể thực thi thành công là gì?
+A. Các bảng cơ sở phải cùng schema
+B. Các bảng cơ sở phải có dữ liệu
+C. Cần quyền SELECT trên bảng gốc
+D. Bạn cần có quyền SELECT trên chính View đó (SELECT privileges on the view)
+Đáp án đúng: D
+Giải thích: Người dùng chỉ cần được cấp quyền SELECT trên View là có thể truy vấn dữ liệu từ View đó mà không bắt buộc phải có quyền xem trực tiếp bảng gốc.
+Câu 213: Truy vấn con SQL nằm trong mệnh đề nào của câu lệnh SELECT thì được gọi là Inline View?
+A. group by
+B. order by
+C. where
+D. from
+Đáp án đúng: D
+Giải thích: Theo định nghĩa, Subquery nằm tại mệnh đề FROM đóng vai trò là một Inline View.
+Câu 214: Cần sửa đổi View EMP_DEPT_VU bằng cách bổ sung thêm cột thứ tư là MANAGER_ID. Thực hiện bằng câu lệnh nào?
+A. ALTER VIEW ... AS SELECT ...
+B. MODIFY VIEW ...
+C. ALTER VIEW ...
+D. CREATE OR REPLACE VIEW emp_dept_vu AS SELECT employee_id, employee_name, department_name, manager_id FROM employees e, departments d WHERE e.department_id = d.department_id;
+Đáp án đúng: D
+Giải thích: Để sửa đổi định nghĩa của một View đã tồn tại mà giữ nguyên các quyền đã cấp, dùng cú pháp CREATE OR REPLACE VIEW AS SELECT....
+Câu 215: Phát biểu nào liên quan đến việc tạo một View là ĐÚNG?
+A. Cột tính toán được đặt tên tự động
+B. Dùng OR REPLACE bắt cấp lại quyền
+C. Bắt buộc đặt tên constraint khi dùng CHECK OPTION
+D. Các cột của View có thể có tên KHÁC với cột của bảng cơ sở bằng cách sử dụng Biệt danh cột (Column Aliases)
+Đáp án đúng: D
+Giải thích: Bạn có thể định nghĩa tiêu đề cột mới cho View bằng Alias trong danh sách SELECT của View.
+Câu 216: Bạn được cấp quyền hệ thống CREATE VIEW. Quyền này cho phép bạn làm gì?
+A. Tạo a table view
+B. Tạo view trong bất kỳ schema nào
+C. Tạo View trong không gian Lược đồ của chính bạn (in your schema)
+D. Tạo sequence view
+Đáp án đúng: C
+Giải thích: Quyền CREATE VIEW cho phép người dùng tạo các đối tượng View thuộc sở hữu của chính tài khoản người dùng đó.
+Câu 217: Tùy chọn nào sau đây là HỢP LỆ khi khởi tạo một View?
+A. WITH BREAK OPTION
+B. ON DELETE CASCADE
+C. WITH GRANT OPTION
+D. WITH CHECK OPTION
+Đáp án đúng: D
+Giải thích: WITH CHECK OPTION đảm bảo các thao tác DML thực hiện qua View phải thỏa mãn điều kiện lọc WHERE của View đó.
+Câu 218: An inline view là câu lệnh SELECT được đặt biệt danh và lồng trong mệnh đề nào của truy vấn khác?
+A. CASE
+B. FROM
+C. WHERE
+D. SELECT
+Đáp án đúng: B
+Giải thích: Tương tự các câu trên, Inline View luôn nằm tại mệnh đề FROM.
+Câu 219: Cần tạo View EMP_VU chỉ cho phép người dùng thao tác DML trên các nhân viên thuộc phòng 10 hoặc 20 (không cho sửa/chèn sang phòng khác). Dùng câu lệnh nào?
+A. CREATE VIEW emp_vu AS SELECT * FROM employees WHERE department_id IN (10,20) WITH READ ONLY;
+B. CREATE VIEW emp_vu AS SELECT * FROM employees WHERE department_id IN (10,20) WITH CHECK OPTION;
+C. CREATE VIEW emp_vu AS SELECT * FROM employees WHERE department_id IN (10,20);
+D. CREATE FORCE VIEW ...
+Đáp án đúng: B
+Giải thích: WITH CHECK OPTION ngăn chặn các thao tác INSERT/UPDATE dữ liệu làm cho dòng bản ghi không còn thỏa mãn điều kiện department_id IN (10, 20).
+Câu 220: Phát biểu nào sau đây về View là ĐÚNG?
+A. View không thể chứa ORDER BY
+B. View không thể chứa GROUP BY
+C. A view can be created as read only (View có thể được tạo dưới dạng chỉ đọc)
+D. View bắt buộc phải khai báo alias cho mọi cột
+Đáp án đúng: C
+Giải thích: Thêm mệnh đề WITH READ ONLY khi tạo View để vô hiệu hóa hoàn toàn tất cả các thao tác DML (INSERT, UPDATE, DELETE) thông qua View đó.
+MODULE 12: Toán tử tập hợp & Cột giả (Set Operators & Pseudo Column) (Câu 221 – 240)
+Câu 221: Tên nào sau đây KHÔNG phải là một Toán tử tập hợp (SET Operator) trong SQL?
+A. Intersect
+B. Union
+C. Minus
+D. Plus
+Đáp án đúng: D
+Giải thích: Bộ 4 toán tử tập hợp chuẩn gồm: UNION, UNION ALL, INTERSECT, và MINUS (hoặc EXCEPT). "Plus" là phép cộng số học.
+Câu 222: Bảng JOB_HISTORY chứa nhân viên đã từng đổi việc. Muốn hiển thị mã các nhân viên CHƯA TỪNG đổi công việc lần nào, dùng toán tử tập hợp nào?
+A. Intersect
+B. Minus
+C. Union
+D. Union All
+Đáp án đúng: B
+Giải thích: Lấy toàn bộ nhân viên ở bảng EMPLOYEES trừ đi (MINUS) danh sách nhân viên có mặt ở JOB_HISTORY để ra người chưa từng đổi việc.
+Câu 223: Điều nào sau đây KHÔNG đúng về việc sử dụng các Toán tử tập hợp?
+A. Các toán tử SET KHÔNG THỂ sử dụng trong các truy vấn con (subqueries)
+B. Các biểu thức trong danh sách SELECT phải tương thích số lượng và kiểu dữ liệu
+C. Có thể dùng ngoặc đơn để thay đổi thứ tự ưu tiên thực thi
+D. Danh sách SELECT phải đồng nhất số cột
+Đáp án đúng: A
+Giải thích: Các toán tử tập hợp hoàn toàn có thể được lồng và sử dụng bình thường bên trong các truy vấn con (Subqueries).
+Câu 224: Phát biểu nào sau đây về việc sử dụng mệnh đề ORDER BY kết hợp với các Toán tử tập hợp là KHÔNG đúng?
+A. Tên cột hoặc alias trong ORDER BY phải lấy từ câu SELECT đầu tiên
+B. ORDER BY có thể nhận tên cột, alias hoặc vị trí số cột
+C. ORDER BY chỉ xuất hiện ở cuối câu lệnh tổng thể
+D. Mệnh đề ORDER BY chỉ có thể xuất hiện ở cuối câu lệnh SELECT ĐẦU TIÊN
+Đáp án đúng: D
+Giải thích: Mệnh đề ORDER BY BẮT BUỘC phải đặt ở vị trí cuối cùng của toàn bộ câu lệnh hợp thành (Compound Query), không được đặt ở câu SELECT đầu.
+Câu 225: Phát biểu nào sau đây về Oracle Server và các Toán tử tập hợp là KHÔNG đúng?
+A. Mặc định kết quả được sắp xếp tăng dần theo cột đầu tiên
+B. Tên cột kết quả do danh sách SELECT ở câu lệnh đầu tiên quyết định
+C. Kiểu dữ liệu của các cột kết quả GIỐNG HỆT như các cột được chọn
+D. Tự động loại bỏ trùng lặp ngoại trừ UNION ALL
+Đáp án đúng: C
+Giải thích: Theo đáp án được thiết lập trong ngân hàng đề kiểm tra.
+Câu 226: Bảng DUAL mặc định chứa dữ liệu gì?
+A. Một cột tên DUMMY và một dòng có giá trị 'X'
+B. Một cột tên D và một dòng có giá trị X
+C. Một cột tên COL và một dòng có giá trị 1
+D. Bảng DUAL không chứa dữ liệu
+Đáp án đúng: A
+Giải thích: Bảng hệ thống DUAL có sẵn 1 cột tên DUMMY kiểu VARCHAR2(1) chứa đúng 1 giá trị là 'X'.
+Câu 227: Điều nào sau đây KHÔNG đúng về các Cột giả (Pseudo columns) trong Oracle?
+A. Cột giả hoạt động như cột thật nhưng không lưu trữ trên đĩa
+B. Cột giả do Oracle Server tự quản lý nội bộ
+C. Bạn KHÔNG THỂ chèn giá trị của cột giả vào cột của bảng khác
+D. Có thể SELECT từ cột giả nhưng không thể INSERT/UPDATE/DELETE giá trị của nó
+Đáp án đúng: C
+Giải thích: Bạn hoàn toàn có thể lấy giá trị cột giả (như ROWNUM, SYSDATE, sequence.NEXTVAL) để chèn (INSERT) vào một bảng thực.
+Câu 228: Tên nào sau đây KHÔNG phải là một loại hoặc tên Cột giả (Pseudo-column) hợp lệ trong Oracle?
+A. Hierarchical Query Pseudo columns (LEVEL, CONNECT_BY_ISLEAF)
+B. Sequence Pseudo columns (CURRVAL, NEXTVAL)
+C. Sub Query Pseudo columns
+D. ROWNUM Pseudo column
+Đáp án đúng: C
+Giải thích: Oracle không có nhóm cột giả nào tên là "Sub Query Pseudo columns".
+Câu 229: Phát biểu nào sau đây về cột giả của Sequence là ĐÚNG?
+A. Dùng CURRVAL để sinh giá trị mới
+B. Dùng NEXTVAL để xem trước giá trị tiếp theo mà không lấy
+C. Dùng CURRVAL để tạo giá trị tiếp theo
+D. Bạn sử dụng cột giả NEXTVAL để lấy giá trị tiếp theo có thể có từ sequence bằng cách THỰC SỰ TRUY XUẤT giá trị đó khỏi sequence
+Đáp án đúng: D
+Giải thích: Gọi sequence.NEXTVAL sẽ làm tăng giá trị sequence lên 1 bước và trả về giá trị mới đó.
+Câu 230: Thành phần nào sau đây KHÔNG nằm trong thông tin được mã hóa bên trong Cột giả ROWID?
+A. Số đối tượng dữ liệu (Data object number)
+B. Tệp dữ liệu chứa dòng (Data file)
+C. Vị trí thứ tự của dòng trong bảng logic (The position of row in oracle table)
+D. Khối dữ liệu chứa dòng (Data block)
+Đáp án đúng: C
+Giải thích: ROWID chứa: Object Number, Datafile ID, Block ID, và Row Slot Number trong Block physical; không lưu vị trí dòng logic.
+Câu 231: Cột giả nào sau đây hữu ích khi thực hiện Phân tích Top-N (TOP-N analysis)?
+A. RANK
+B. ROWID
+C. LEVEL
+D. ROWNUM
+Đáp án đúng: D
+Giải thích: Cột giả ROWNUM gán số thứ tự cho các dòng kết quả trả về, dùng ở mệnh đề WHERE ROWNUM <= N để giới hạn Top N.
+Câu 232: Cần lấy thông tin nhân viên từ 2 bảng khác nhau (có thể chứa mã trùng nhau), nhưng chỉ muốn hiển thị MỖI BẢN GHI DUY NHẤT 1 LẦN (loại bỏ trùng). Dùng toán tử tập hợp nào?
+A. Union
+B. Union all
+C. Minus
+D. Intersect
+Đáp án đúng: A
+Giải thích: Toán tử UNION gộp kết quả của 2 câu truy vấn và tự động thực hiện thao tác loại bỏ các dòng bị trùng lặp.
+Câu 233: Kết quả của câu truy vấn: SELECT * FROM employees WHERE ROWNUM < 10; là gì?
+A. Thực hiện Top-N lấy 9 người lương cao nhất
+B. Báo lỗi vì ROWNUM không có ở SELECT
+C. Chọn 10 bản ghi
+D. Trả về 9 DÒNG đầu tiên lấy ra từ bảng Employees (nếu bảng có từ 9 dòng trở lên)
+Đáp án đúng: D
+Giải thích: Mệnh đề WHERE ROWNUM < 10 sẽ ngắt câu truy vấn ngay khi lấy đủ 9 bản ghi đầu tiên thỏa mãn.
+Câu 234: Các câu truy vấn có chứa các Toán tử tập hợp (SET operators) được gọi là loại truy vấn gì?
+A. Compound queries (Truy vấn hợp thành)
+B. Set queries
+C. Complex queries
+D. Set Manipulation queries
+Đáp án đúng: A
+Giải thích: Câu lệnh chứa UNION, INTERSECT, MINUS kết hợp nhiều câu SELECT được gọi là Compound Query.
+Câu 235: Điều nào sau đây KHÔNG đúng về Toán tử UNION?
+A. UNION hoạt động trên tất cả các cột được chọn
+B. Toán tử IN có độ ưu tiên cao hơn UNION
+C. Mặc định đầu ra sắp xếp tăng dần theo cột đầu tiên
+D. Các giá trị NULL bị BỎ QUA trong quá trình kiểm tra trùng lặp
+Đáp án đúng: D
+Giải thích: UNION coi hai giá trị NULL là bằng nhau và thực hiện loại bỏ trùng lặp đối với cả các dòng chứa NULL.
+Câu 236: Khi sử dụng Toán tử tập hợp nào thì kết quả trả về KHÔNG TỰ ĐỘNG SẮP XẾP theo mặc định?
+A. Minus
+B. Intersect
+C. Union
+D. Union All
+Đáp án đúng: D
+Giải thích: UNION ALL chỉ đơn giản nối kết quả 2 câu truy vấn mà không tốn chi phí thực hiện Sort để loại bỏ trùng lặp.
+Câu 237: Phát biểu nào sau đây KHÔNG đúng về Toán tử UNION ALL?
+A. Từ khóa DISTINCT có thể được sử dụng (The DISTINCT keyword can be used)
+B. Đầu ra không tự động sắp xếp
+C. Trả về tất cả các dòng từ nhiều truy vấn
+D. Các dòng trùng lặp không bị loại bỏ
+Đáp án đúng: A
+Giải thích: UNION ALL giữ lại toàn bộ trùng lặp, không đi kèm với từ khóa DISTINCT.
+Câu 238: Điều nào sau đây KHÔNG đúng về việc sử dụng Toán tử INTERSECT?
+A. INTERSECT không bỏ qua giá trị NULL
+B. Tên cột không bắt buộc phải giống hệt nhau
+C. Số cột và kiểu dữ liệu phải đồng nhất
+D. Việc ĐẢO NGƯỢC THỨ TỰ các bảng được giao có thể làm thay đổi kết quả đầu ra
+Đáp án đúng: D
+Giải thích: Phép giao toán học có tính giao hoán:  luôn cho ra kết quả giống hệt , thứ tự các câu lệnh không làm đổi kết quả.
+Câu 239: Sử dụng toán tử nào để hiển thị các bản ghi là KẾT QUẢ CHUNG (xuất hiện ở tất cả các câu truy vấn)?
+A. Union
+B. Minus
+C. Intersect
+D. Union All
+Đáp án đúng: C
+Giải thích: Toán tử INTERSECT chỉ trả về các dòng bản ghi xuất hiện đồng thời trong tập kết quả của tất cả các câu SELECT.
+Câu 240: Phát biểu nào sau đây là ĐÚNG về việc sử dụng Toán tử UNION?
+A. Kiểu dữ liệu giống nhau nhưng số cột có thể khác
+B. SỐ LƯỢNG CỘT và KIỂU DỮ LIỆU của các cột tương ứng bắt buộc phải ĐỒNG NHẤT trong tất cả các câu lệnh SELECT
+C. Tên các cột bắt buộc phải giống hệt nhau
+D. Số cột giống nhau nhưng kiểu dữ liệu có thể khác
+Đáp án đúng: B
+Giải thích: Quy tắc toán tử tập hợp: Mọi câu lệnh SELECT tham gia hợp thành phải chọn cùng số lượng cột và các cột tương ứng phải đồng nhất kiểu dữ liệu.
+MODULE 13: Chuẩn hóa cơ sở dữ liệu (Normalization) (Câu 241 – 260)
+Câu 241: Phát biểu nào sau đây KHÔNG đúng về Chuẩn hóa cơ sở dữ liệu (Database Normalization)?
+A. Chuẩn hóa thường bao gồm việc KẾT HỢP các bảng nhỏ lại thành một bảng lớn duy nhất để tối đa hóa khả năng truy cập
+B. Là quá trình tổ chức dữ liệu nhằm giảm thiểu sự trùng lặp (redundancy)
+C. Mục tiêu là phân rã quan hệ có bất thường thành các quan hệ nhỏ hơn, có cấu trúc tốt
+D. Phân chia các bảng lớn thành các bảng nhỏ hơn và định nghĩa mối quan hệ giữa chúng
+Đáp án đúng: A
+Giải thích: Chuẩn hóa là quá trình Phân rã (Decompose) các bảng lớn bị trùng lặp dữ liệu thành các bảng nhỏ hơn, ngược lại với việc gom hợp bảng.
+Câu 242: Một thuộc tính  phụ thuộc hàm đầy đủ (Fully functionally dependent) vào tập thuộc tính  nếu nó:
+A. Phụ thuộc hàm vào 
+B. Không phụ thuộc hàm vào bất kỳ tập con thực sự (proper subset) nào của 
+C. Hoặc A hoặc B
+D. Cả A và B (Both A and B)
+Đáp án đúng: D
+Giải thích: Phụ thuộc hàm đầy đủ nghĩa là  phụ thuộc vào toàn bộ tập  và thiếu bất kỳ thuộc tính nào trong  thì phụ thuộc hàm không còn tồn tại.
+Câu 243: Điều nào sau đây là ĐÚNG về Phụ thuộc đa trị (Multivalued dependency)?
+A. Sự xuất hiện của khóa chính kéo theo khóa ngoại
+B. Là ràng buộc mà sự xuất hiện của CÁC DÒNG NHẤT ĐỊNH trong bảng kéo theo sự XUẤT HIỆN CỦA CÁC DÒNG KHÁC (presence of certain rows implies presence of other rows)
+C. Phụ thuộc hàm kéo theo phụ thuộc bắc cầu
+D. Phụ thuộc bắc cầu kéo theo phụ thuộc hàm
+Đáp án đúng: B
+Giải thích: Phụ thuộc đa trị  định nghĩa tính độc lập của các tập thuộc tính, dẫn đến sự xuất hiện bắt buộc của các bộ dòng kết hợp.
+Câu 244: Phát biểu nào sau đây là ĐÚNG về Siêu khóa (Super Keys)?
+A. Siêu khóa không thể là khóa ứng viên
+B. Bảng chỉ có thể có duy nhất 1 siêu khóa
+C. Siêu khóa không chứa thuộc tính của khóa ứng viên
+D. Siêu khóa là một tập hợp các thuộc tính có thể dùng để ĐỊNH DANH DUY NHẤT một bản ghi trong CSDL
+Đáp án đúng: D
+Giải thích: Super Key là bất kỳ tập hợp một hoặc nhiều thuộc tính nào cho phép phân biệt duy nhất từng dòng trong bảng quan hệ.
+Câu 245: Phát biểu nào sau đây KHÔNG đúng?
+A. Thuộc tính khóa (prime attribute) là một phần của tất cả siêu khóa
+B. Thuộc tính khóa là thuộc tính xuất hiện trong ít nhất 1 khóa ứng viên
+C. Thuộc tính không khóa (non-prime attribute) là thuộc tính KHÔNG XUẤT HIỆN trong bất kỳ SIÊU KHÓA nào
+D. Thuộc tính không khóa là thuộc tính không xuất hiện trong bất kỳ khóa ứng viên nào
+Đáp án đúng: C
+Giải thích: Mọi Super Key đều chứa Candidate Key, nên các thuộc tính không khóa vẫn có thể nằm trong các Super Key mở rộng (khi ghép thêm thuộc tính thừa).
+Câu 246: Điều kiện nào sau đây KHÔNG phải là điều kiện bắt buộc để một bảng đạt Dạng chuẩn 1 (1NF)?
+A. Không có các dòng trùng lặp
+B. Không có thứ tự ưu tiên dòng từ trên xuống dưới
+C. Bắt buộc có thứ tự các cột từ trái sang phải (left-to-right ordering to the columns)
+D. Mỗi giao điểm dòng-cột chứa đúng 1 giá trị đơn lẻ (Atomic value)
+Đáp án đúng: C
+Giải thích: Lý thuyết CSDL quan hệ xem tập hợp các cột là không có thứ tự (Unordered), thứ tự vị trí các cột không ảnh hưởng đến Dạng chuẩn 1NF.
+Câu 247: Tại sao bảng ở Dạng chuẩn 1 (1NF) dưới đây lại CHƯA ĐẠT Dạng chuẩn 2 (2NF)?
+Employees' Skills (Employee, Skill, Current Work Location)
+(Khóa chính phức hợp gồm: Employee + Skill)
+A. Thuộc tính không khóa (Current Work Location) không phụ thuộc hàm đầy đủ vào TOÀN BỘ khóa chính (chỉ phụ thuộc vào 1 phần khóa là Employee)
+B. Bảng chứa nhiều bản ghi cho cùng nhân viên
+C. Thuộc tính không khóa phụ thuộc vào mọi thuộc tính khóa
+D. Bảng chưa đạt 1NF
+Đáp án đúng: A
+Giải thích: Vi phạm 2NF vì có Phụ thuộc một phần (Partial Dependency): Địa điểm làm việc Current Work Location chỉ phụ thuộc vào Employee, không phụ thuộc vào Skill.
+Câu 248: Dạng chuẩn 3 (3NF) bị vi phạm ở bảng dưới đây do KHÔNG thỏa mãn điều kiện nào?
+Tournament Winners (Tournament, Year, Winner, Winner Date of Birth)
+(Khóa chính: Tournament + Year)
+A. Mọi thuộc tính khóa phụ thuộc không bắc cầu
+B. Mọi thuộc tính KHÔNG KHÓA của bảng phải phụ thuộc KHÔNG BẮC CẦU vào khóa ứng viên
+C. Bảng phải đạt 2NF
+D. Bảng phải đạt 1NF
+Đáp án đúng: B
+Giải thích: Bảng chứa Phụ thuộc bắc cầu (Transitive Dependency): (Tournament, Year) -> Winner, và Winner -> Winner Date of Birth. Do đó ngày sinh bị phụ thuộc bắc cầu vào khóa chính.
+Câu 249: Phát biểu nào sau đây về Dạng chuẩn Boyce-Codd (BCNF) là KHÔNG đúng?
+A. Rất hiếm trường hợp bảng 3NF không đạt BCNF
+B. BCNF giải quyết các bất thường mà 3NF chưa xử lý được
+C. BCNF là dạng chuẩn mạnh hơn một chút so với 3NF
+D. Bảng 3NF KHÔNG CÓ nhiều khóa ứng viên chồng chéo bị coi là không đạt BCNF
+Đáp án đúng: D
+Giải thích: Nếu một bảng đạt 3NF và không có các khóa ứng viên chồng chéo (overlapping candidate keys) thì nó chắc chắn đã đạt BCNF.
+Câu 250: Tên viết tắt đầy đủ của dạng chuẩn DKNF là gì?
+A. Donner-Korth Normal Form
+B. Domain-Key Normal Form
+C. Dual-Key Normal Form
+D. Domain-Knowledge Normal Form
+Đáp án đúng: B
+Giải thích: DKNF = Domain-Key Normal Form (Dạng chuẩn Miền-Khóa).
+Câu 251: Nếu một bảng được xác nhận đã đạt Dạng chuẩn 3 (3NF), điều nào sau đây có thể KHÔNG ĐÚNG?
+A. Mỗi ô chứa đúng 1 giá trị đơn
+B. Bảng hoàn toàn KHÔNG CÒN các bất thường thao tác dữ liệu (modification anomalies)
+C. Thuộc tính không khóa phụ thuộc không bắc cầu vào khóa
+D. Thuộc tính không khóa phụ thuộc hàm đầy đủ vào khóa
+Đáp án đúng: B
+Giải thích: Bảng đạt 3NF vẫn có thể tiềm ẩn các bất thường thao tác nếu chứa nhiều khóa ứng viên chồng chéo (cần đưa tiếp lên BCNF, 4NF, 5NF).
+Câu 252: Phát biểu nào sau đây mô tả đúng nhất về các Bất thường thao tác (Modification anomalies)?
+A. Bất thường chỉ xảy ra ở 2NF
+B. Không thể sửa dữ liệu khi có bất thường
+C. Khi cố gắng sửa đổi dữ liệu trong bảng, các TÁC DỤNG PHỤ KHÔNG MONG MUỐN có thể xảy ra (undesired side-effects may follow)
+D. Thường xuyên báo lỗi hệ thống
+Đáp án đúng: C
+Giải thích: Bất thường dữ liệu (Thêm, Xóa, Sửa) gây ra tình trạng mất dữ liệu ngoài ý muốn hoặc gây ra sự bất nhất (inconsistency) trong CSDL.
+Câu 253: Ký hiệu nào sau đây chỉ ra rằng  phụ thuộc bắc cầu vào ?
+A. 
+B. 
+C. 
+D. 
+Đáp án đúng: D
+Giải thích: Phụ thuộc bắc cầu xảy ra khi  và , từ đó dẫn đến  gián tiếp thông qua trung gian  (với  không phải là khóa).
+Câu 254: Tên gọi đầy đủ của Dạng chuẩn BCNF là gì?
+A. Boyce-Cartesian normal form
+B. Boyce-Codd normal form
+C. Bond-Codd normal form
+D. Borne-Codd normal form
+Đáp án đúng: B
+Giải thích: BCNF = Boyce-Codd Normal Form (được đặt theo tên Raymond F. Boyce và Edgar F. Codd).
+Câu 255: Tên nào sau đây KHÔNG phải là một loại Bất thường thao tác (Modification anomaly) chuẩn?
+A. Update Anomaly (Bất thường khi cập nhật)
+B. Insertion anomaly (Bất thường khi chèn)
+C. Deletion anomaly (Bất thường khi xóa)
+D. Drop anomaly
+Đáp án đúng: D
+Giải thích: 3 loại bất thường thao tác chuẩn trong lý thuyết CSDL là: Insertion Anomaly, Deletion Anomaly, và Update Anomaly.
+Câu 256: Xét cấu trúc bảng giảng viên: Faculty (Faculty ID, Faculty Name, Faculty Hire Date, Course Code). Các loại bất thường thao tác nào có thể xảy ra khi chỉnh sửa bảng này?
+A. Bất thường khi Chèn, Cập nhật và Xóa (Insertion, Update and Deletion anomaly)
+B. Chỉ bất thường khi chèn
+C. Bất thường Chèn và Cập nhật
+D. Bất thường Cập nhật và Xóa
+Đáp án đúng: A
+Giải thích: Do bảng bị trùng lặp dữ liệu giảng viên cho mỗi môn học, nó chịu cả 3 loại bất thường: Không thêm được giảng viên chưa dạy môn nào, xóa môn làm mất thông tin giảng viên, và phải sửa ngày tuyển dụng ở nhiều dòng.
+Câu 257: Điều nào sau đây KHÔNG phải là một mục tiêu hợp lệ của việc chuẩn hóa CSDL?
+A. Loại bỏ các bất thường thao tác
+B. Giúp mô hình dữ liệu rõ ràng hơn
+C. HOÀN TOÀN TRÁNH VIỆC THAY ĐỔI CẤU TRÚC BẢNG sau khi chuẩn hóa (Completely avoid the need to change table structure)
+D. Giảm thiểu việc thiết kế lại khi mở rộng CSDL
+Đáp án đúng: C
+Giải thích: Chuẩn hóa tối ưu cấu trúc dữ liệu hiện tại, nhưng không thể đảm bảo ngăn cấm tuyệt đối việc phải thay đổi cấu trúc bảng khi yêu cầu nghiệp vụ tương lai thay đổi.
+Câu 258: Xét bảng Transactions chứa dữ liệu giao dịch của khách hàng với các ô bị bỏ trống/lồng nhóm. Bảng này đang ở Dạng chuẩn nào?
+A. 3NF
+B. 1NF
+C. 2NF
+D. Chưa đạt Dạng chuẩn 1 (Non 1NF)
+Đáp án đúng: D
+Giải thích: Bảng chứa các nhóm lặp (repeating groups) hoặc các ô rỗng gộp dòng vi phạm tính nguyên tố (Atomicity), do đó chưa đạt Dạng chuẩn 1NF.
+Câu 259: Phụ thuộc hàm (Functional dependency) được định nghĩa như thế nào?
+A. Thuộc tính Y gán với nhiều X
+B. Mỗi Y gán với đúng một X
+C. Trong một bảng, thuộc tính Y phụ thuộc hàm vào tập X nếu và chỉ nếu MỖI GIÁ TRỊ X XÁC ĐỊNH CHÍNH XÁC MỘT GIÁ TRỊ Y (each X value is associated with precisely one Y value)
+D. Mỗi X gán với ít nhất một Y
+Đáp án đúng: C
+Giải thích: Ký hiệu : Biết giá trị của  thì luôn luôn xác định được duy nhất một giá trị tương ứng của .
+Câu 260: Ký hiệu  thể hiện điều gì về các thuộc tính  và ?
+A.  phụ thuộc hàm vào 
+B.  phụ thuộc hàm vào  (Y is functionally dependent on X)
+C. Không phương án nào
+D.  và  phụ thuộc hàm lẫn nhau
+Đáp án đúng: B
+Giải thích:  đọc là " xác định hàm " hoặc " phụ thuộc hàm vào ".
