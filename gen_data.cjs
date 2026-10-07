@@ -1,19 +1,6 @@
-export interface Question {
-  id: number;
-  module: number;
-  q_en: string;
-  o_en: string[];
-  q_vi: string;
-  o_vi: string[];
-  c: number;
-  ex_en: string;
-  ex_vi: string;
-}
-
-export type Language = 'en' | 'vi';
-export type QuizMode = 'practice' | 'exam';
-
-export const MODULE_NAMES = [
+const fs = require('fs');
+const q = JSON.parse(fs.readFileSync('src/data/questions.json', 'utf8'));
+const out = `const MODULES = [
   "Introduction to DBMS / Giới thiệu DBMS",
   "Introduction to SQL / Giới thiệu SQL",
   "DDL – Data Definition Language",
@@ -26,5 +13,8 @@ export const MODULE_NAMES = [
   "Advanced Sub Queries / Truy vấn con nâng cao",
   "Views / Khung nhìn",
   "Set Operators & Pseudocolumns",
-  "Normalization / Chuẩn hóa",
+  "Normalization / Chuẩn hóa"
 ];
+
+const DATA = ` + JSON.stringify(q, null, 2) + `;\n`;
+fs.writeFileSync('data.js', out, 'utf8');

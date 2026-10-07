@@ -1,4 +1,20 @@
-[
+const MODULES = [
+  "Introduction to DBMS / Giới thiệu DBMS",
+  "Introduction to SQL / Giới thiệu SQL",
+  "DDL – Data Definition Language",
+  "Constraints / Ràng buộc",
+  "DML – Data Manipulation Language",
+  "Single Row Functions / Hàm đơn hàng",
+  "Group Functions / Hàm nhóm",
+  "SQL Joins / Phép nối",
+  "Sub Queries / Truy vấn con",
+  "Advanced Sub Queries / Truy vấn con nâng cao",
+  "Views / Khung nhìn",
+  "Set Operators & Pseudocolumns",
+  "Normalization / Chuẩn hóa"
+];
+
+const DATA = [
   {
     "id": 1,
     "module": 1,
@@ -5463,4 +5479,4 @@
     "ex_en": "Denormalization is the intentional process of re-introducing redundancy into a normalized database schema to optimize read/query performance.",
     "ex_vi": "X→Y đọc là \"X xác định hàm Y\" hoặc \"Y phụ thuộc hàm vào X\"."
   }
-]
+];
