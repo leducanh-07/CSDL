@@ -1,19 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DBMS & SQL Mastery - Practice & Learn</title>
-
+const fs = require('fs');
+let html = fs.readFileSync('index.html', 'utf8');
+const seoMeta = `
     <meta name="description" content="Interactive DBMS and SQL Mastery Quiz. Practice database architecture, DDL, DML, SQL Joins, Subqueries, Normalization, and Oracle fundamentals. Perfect for DBA exams and developer interviews. Learn in English and Tiếng Việt." />
     <meta name="keywords" content="DBMS, SQL Quiz, Oracle Database, DDL, DML, SQL Joins, Normalization, BCNF, Database Administration, Developer Interview Prep, Học SQL, Trắc nghiệm CSDL" />
     <meta property="og:title" content="DBMS and SQL Mastery" />
     <meta property="og:description" content="Master Database Management Systems and SQL through interactive quizzes." />
-
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+`;
+html = html.replace('<title>DBMS & SQL Mastery</title>', '<title>DBMS & SQL Mastery - Practice & Learn</title>\n' + seoMeta);
+fs.writeFileSync('index.html', html, 'utf8');

@@ -1,0 +1,50 @@
+<USER_REQUEST>
+Act as a Vibe Coding Expert. You specialize in crafting UI/UX designs that are both visually stunning and highly functional, incorporating the latest trends in motion and 3D effects using Framer. Your task is to develop a web or mobile application with these features while ensuring it aligns with modern SEO practices.
+
+You will:
+- Design interfaces with a trending and modern color palette.
+- Integrate motion and 3D effects using Framer for an immersive user experience.
+- Implement trending SEO techniques and keywords to enhance visibility.
+- Confirm each design choice with stakeholders through step-by-step options.
+
+Rules:
+- Ensure all designs are free from vulnerabilities.
+- Keep the user interface intuitive and accessible.
+- Regularly update SEO keywords to reflect market trends.
+
+Role: Senior Web Developer & UI/UX Expert
+
+Task: Refactor the web application, add multi-language support (English & Vietnamese), and implement an English Quiz Learning feature using data from an attached .docx file.
+
+Detailed Requirements:
+
+1. Data Extraction & Integration:
+   - Parse all 260 questions, choices, correct answers, and technical explanations from the attached .docx file.
+   - Convert the extracted data into a structured format (e.g., `questionsData.json` or JS data module) categorized into 13 modules (DBMS Architecture, SQL SELECT, DDL, Constraints, DML, Single-Row Functions, Aggregate Functions, SQL Joins, Subqueries, Correlated Subqueries, Views, Set Operators, Database Normalization).
+
+2. Multi-Language Support (i18n):
+   - Implement bilingual support (Vietnamese & English).
+   - Add a language switcher dropdown/toggle in the Header/Navigation bar.
+   - Ensure UI text, buttons, navigation, and page descriptions switch smoothly between languages.
+
+3. English Quiz Feature Component:
+   - Build a responsive, interactive Quiz page/component.
+   - Core Features:
+     a. Module Filter: Allow users to filter practice questions by specific module (or choose "All Modules").
+     b. Quiz Modes:
+        - Practice Mode: Shows instant feedback (correct/incorrect) with the technical explanation immediately after picking an answer.
+        - Exam Mode: Allows users to answer all questions sequentially with a timer, submitting at the end for a final score.
+     c. Question Navigation: Include question pagination, a progress bar, and a jump-to-question grid.
+     d. Bookmark/Favorite: Allow users to mark difficult questions for review later.
+     e. Score Summary & Review: Display a summary page at the end of a quiz session with score percentage and review of missed questions.
+
+4. UI/UX Refactoring & Polish:
+   - Update and clean up the existing page structure and content for a modern, cohesive look.
+   - Fully responsive across Desktop, Tablet, and Mobile devices.
+   - Maintain clean state management and modular component design.
+
+Please inspect the existing codebase, parse the attached .docx file, and proceed step-by-step to build these updates cleanly.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-07T07:48:07+07:00.
+</ADDITIONAL_METADATA>

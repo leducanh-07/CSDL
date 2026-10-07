@@ -1,0 +1,37 @@
+<USER_REQUEST>
+You are acting as a Senior Full-Stack Developer working on this codebase.
+
+I have an attached .docx file containing the newly translated and refined 260 DBMS multiple-choice questions (including refined question texts, options, correct answers, and detailed technical explanations).
+
+TASK OBJECTIVE:
+Update the database/data file(s) in our current codebase with the updated question texts, options, correct answers, and explanations from the attached .docx file. 
+
+STRICT CONSTRAINTS & GUIDELINES:
+
+1. ABSOLUTELY NO UI/LAYOUT CHANGES:
+   - Do NOT modify, refactor, or touch any UI components, JSX/TSX layout files, HTML structure, CSS/Tailwind styles, or state management logic.
+   - Keep the existing website interface, user flow, and design 100% intact.
+
+2. DATA-ONLY UPDATE:
+   - Locate the data file where the questions are stored (e.g., `questions.json`, `data.ts`, `data.js`, or database seed file).
+   - Update ONLY the data fields corresponding to:
+     * Question text
+     * Options list
+     * Correct answer indicator
+     * Technical explanation
+   - Retain the exact data schema and key names currently used in the codebase (e.g., `id`, `question`, `options`, `answer`, `explanation`).
+
+3. CONTENT REFINEMENT RULES:
+   - Ensure the Vietnamese translation for question content, options, and explanations is natural, clear, and professional.
+   - Maintain standardized IT jargon: Keep core DBMS/Oracle terms in English or in parentheses (e.g., SGA, PGA, Tablespace, Redo Log Buffer, Primary Key, Foreign Key, Inline View, Subquery, Normalization, 1NF, BCNF, etc.).
+   - Ensure every updated explanation includes thorough technical reasoning detailing WHY the answer is correct (referencing database architecture, SQL execution rules, or normalization criteria).
+
+Please inspect the existing data structure first, then perform the update systematically.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-02T13:50:42+07:00.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
